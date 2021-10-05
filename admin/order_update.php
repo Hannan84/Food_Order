@@ -42,7 +42,7 @@ if (isset($_POST['submit'])){
         <br>
         <div class="form-group">
             <label for="Status">Status: <i class="fas fa-th-list"></i></label>
-            <select name="status" class="form-control">
+            <select name="status" class="form-control" style="width: 100%">
                 <option <?php if ($std["status"] == 'Ordered'){ echo "selected";}?> value="Ordered">Ordered</option>
                 <option <?php if ($std["status"] == 'On Delivery'){ echo "selected";}?> value="On Delivery">On Delivery</option>
                 <option <?php if ($std["status"] == 'Delivered'){ echo "selected";}?> value="Delivered">Delivered</option>
