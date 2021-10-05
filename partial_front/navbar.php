@@ -58,7 +58,7 @@ include 'Front-Back-Conn/user.php';
                                 <i class="fas fa-user-circle"></i> <?php echo $_SESSION['name']?> <i class="fas fa-caret-down"></i>
                             </button>
                             <div class="dropdown-content" id="myDropdown">
-                                <a href="#">Link 1</a>
+                                <a href="#">My orders</a>
                                 <a href="user_profile.php">Profile</a>
                                 <a href="user_logout.php">Logout</a>
                             </div>
