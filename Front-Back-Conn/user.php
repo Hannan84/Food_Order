@@ -88,8 +88,8 @@ class User extends Database {
         }
     }
 
+//  Create function to get all user information
     public function displayUser(){
-
 //       Create Sql Query to show data from database
         $sql = "SELECT * FROM tbl_user WHERE verified = 'active'";
 
@@ -105,6 +105,22 @@ class User extends Database {
             while ($row = $result->fetch_assoc()){
                 $data[] = $row;
             }return $data;
+        }
+    }
+
+//  Create function to get single user information
+    public function userDetails(){
+
+//       Create Sql Query to show data from database
+        $sql = "SELECT * FROM tbl_user WHERE verified = 'active'";
+
+//        Execute the query
+        $result = $this->conn->query($sql);
+
+//        Check whether the Query is Execute or Not
+        if ($result==true){
+            $row = $result->fetch_assoc();
+            return $row;
         }
     }
 
