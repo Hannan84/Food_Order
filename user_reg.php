@@ -34,7 +34,7 @@ if (isset($_POST['submit'])){
 </section>
 <!-- Navbar Section Ends Here -->
 
-<div class="login">
+<div class="form-container">
     <h3 class="text-center">Create an Account</h3>
     <br>
     <?php if (isset($_SESSION['pass_not_match'])){?>
@@ -75,34 +75,34 @@ if (isset($_POST['submit'])){
     </br>
     <form action="" method="post">
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Name"">Name: <i class="fas fa-signature"></i></label>
-            <input required type="text" class="form-control" name="name" placeholder="Name">
+            <input required type="text" class="input-responsive" name="name" placeholder="Name">
         </div>
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Email"">Email: <i class="fas fa-mail-bulk"></i></label>
-            <input required type="text" class="form-control" name="email" placeholder="Email">
+            <input required type="text" class="input-responsive" name="email" placeholder="Email">
         </div>
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Number"">Number: <i class="fas fa-phone"></i></label>
-            <input required type="number" class="form-control" name="number" placeholder="Number">
+            <input required type="number" class="input-responsive" name="number" placeholder="Number">
         </div>
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Address"">Address: <i class="fas fa-map-marker-alt"></i></label>
-            <textarea required name="address" class="border-radius" cols="43" rows="7" placeholder="Address"></textarea>
+            <textarea required name="address" class="input-responsive" cols="43" rows="7" placeholder="Address"></textarea>
         </div>
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Password"">Password: <i class="fas fa-key"></i></label>
-            <input required type="password" class="form-control" name="password" placeholder="Password">
+            <input required type="password" class="input-responsive" name="password" placeholder="Password">
         </div>
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Confirm Password"">Confirm Password: <i class="fas fa-key"></i></label>
-            <input required type="password" class="form-control" name="con_password" placeholder="Confirm Password">
+            <input required type="password" class="input-responsive" name="con_password" placeholder="Confirm Password">
         </div>
         <button type="submit" name="submit" class="btn-primary-login">Register</button>
         <div class="text-center margin-top">
