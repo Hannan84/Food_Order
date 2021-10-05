@@ -55,16 +55,16 @@ if (isset($_POST['submit'])){
                 
                 <fieldset>
                     <legend>Delivery Details</legend>
-                    <div class="order-label">Full Name</div>
-                    <input type="text" name="full_name" placeholder="E.g. HHHHSSSS" class="input-responsive" required>
+                    <div class="order-label">Full Name <i class="fas fa-signature"></i></div>
+                    <input type="text" name="full_name" placeholder="E.g. Tom & Jerry" class="input-responsive" required>
 
-                    <div class="order-label">Phone Number</div>
+                    <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
                     <input type="tel" name="contact" placeholder="E.g. 017xxxxxxxx" class="input-responsive" required>
 
-                    <div class="order-label">Email</div>
+                    <div class="order-label">Email <i class="fas fa-mail-bulk"></i></div>
                     <input type="email" name="email" placeholder="E.g. hi@gmail.com" class="input-responsive" required>
 
-                    <div class="order-label">Address</div>
+                    <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
                     <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
 
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
