@@ -86,6 +86,16 @@ if (isset($_POST['submit'])){
         </div>
         <br>
         <div class="form-group">
+            <label for="Number"">Number: <i class="fas fa-phone"></i></label>
+            <input required type="number" class="form-control" name="number" placeholder="Number">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="Address"">Address: <i class="fas fa-map-marker-alt"></i></label>
+            <textarea required name="address" class="border-radius" cols="43" rows="7" placeholder="Address"></textarea>
+        </div>
+        <br>
+        <div class="form-group">
             <label for="Password"">Password: <i class="fas fa-key"></i></label>
             <input required type="password" class="form-control" name="password" placeholder="Password">
         </div>
