@@ -34,7 +34,7 @@ if (isset($_POST['submit'])){
 </section>
 <!-- Navbar Section Ends Here -->
 
-<div class="login">
+<div class="form-container">
     <h3 class="text-center">Reset Your Password</h3>
     <br>
 
@@ -58,14 +58,14 @@ if (isset($_POST['submit'])){
 
     <form action="" method="post">
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Password">Password : * </label><br>
-            <input required type="password" class="form-control" name="password" placeholder="Password">
+            <input required type="password" class="input-responsive" name="password" placeholder="Password">
         </div>
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Confirm Password">Confirm Password : * </label><br>
-            <input required type="password" class="form-control" name="con_password" placeholder="Confirm Password">
+            <input required type="password" class="input-responsive" name="con_password" placeholder="Confirm Password">
         </div>
         <button type="submit" name="submit" class="btn-primary-login">Reset Password</button>
         <div class="text-center margin-top">
