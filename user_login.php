@@ -36,7 +36,7 @@ if (isset($_POST['submit'])){
 </section>
 <!-- Navbar Section Ends Here -->
 
-<div class="login">
+<div class="form-container">
     <h3 class="text-center">Welcome Back!</h3>
     <p class="text-center">Sign up or log in to continue</p>
     <br>
@@ -73,14 +73,14 @@ if (isset($_POST['submit'])){
 
     <form action="" method="post">
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Email"">Email: <i class="fas fa-mail-bulk"></i></label><br>
-            <input required type="text" class="form-control" name="email" placeholder="Email">
+            <input required type="text" class="input-responsive" name="email" placeholder="Email">
         </div>
         <br>
-        <div class="form-group">
+        <div class="order-label">
             <label for="Password"">Password: <i class="fas fa-key"></i></label><br>
-            <input required type="password" class="form-control" name="password" placeholder="Password">
+            <input required type="password" class="input-responsive" name="password" placeholder="Password">
         </div>
         <button type="submit" name="submit" class="btn-primary-login">Login</button>
         <div class="text-center margin-top">
