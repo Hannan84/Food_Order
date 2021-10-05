@@ -46,7 +46,7 @@ if (isset($_POST['submit'])){
         <br>
         <div class="form-group">
             <label for="Category">Category: <i class="fas fa-th-list"></i></label>
-            <select name="category" class="form-control">
+            <select name="category" class="form-control" style="width: 100%">
                 <?php
                 $obj = new Food();
                 $data = $obj->activeCategory();
