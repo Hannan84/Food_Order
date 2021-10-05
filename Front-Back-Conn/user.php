@@ -8,6 +8,8 @@ class User extends Database {
 //    1. Get data from form
         $name = $this->conn->real_escape_string($_POST['name']);
         $email = $this->conn->real_escape_string($_POST['email']);
+        $number = $this->conn->real_escape_string($_POST['number']);
+        $address = $this->conn->real_escape_string($_POST['address']);
         $password  = md5($_POST['password']);
         $con_password  = md5($_POST['con_password']);
         $token = bin2hex(random_bytes(11));
@@ -40,7 +42,7 @@ class User extends Database {
         else{
 
 //          sql query to save data into database
-            $sql1 = "INSERT INTO tbl_user VALUES (null, '$name','$email','$password','$token','inactive')";
+            $sql1 = "INSERT INTO tbl_user VALUES (null, '$name','$email','$number','$address','$password','$token','inactive')";
 
 //          Executing query and saving data into database
             $result1 = $this->conn->query($sql1);
