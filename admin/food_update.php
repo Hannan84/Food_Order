@@ -34,7 +34,7 @@ if (isset($_POST['submit'])){
         <br>
         <div class="form-group">
             <label for="Description">Description: <i class="fas fa-signature"></i></label>
-            <textarea cols="43" rows="6" name="description"><?php echo $std['description'];?></textarea>
+            <textarea cols="43" rows="6" class="form-control" name="description"><?php echo $std['description'];?></textarea>
         </div>
         <br>
         <div class="form-group">
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])){
         <br>
         <div class="form-group">
             <label for="Category">Category: <i class="fas fa-th-list"></i></label>
-            <select name="category_id" class="form-control">
+            <select name="category_id" class="form-control" style="width: 100%">
                 <?php
                 $obj = new Food();
                 $data = $obj->activeCategory();
