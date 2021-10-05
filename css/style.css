@@ -280,7 +280,7 @@ fieldset{
     font-weight: bold;
     border-radius: 5px;
     margin-top: 5PX;
-    width: 103%;
+    width: 101.5%;
     height: 32px;
 }
 .btn-primary-login:hover{
@@ -293,12 +293,6 @@ fieldset{
     margin: 10% auto;
     padding: 2%;
     border-radius: 5px;
-}
-.form-control{
-    width: 100%;
-    height: 30px;
-    border-radius: 5px;
-    padding: 0 0 0 2%;
 }
 
 .a-color{
