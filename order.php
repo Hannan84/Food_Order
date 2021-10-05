@@ -2,8 +2,13 @@
 // include navbar section
 include 'partial_front/navbar.php';
 
+
+$user_obj = new User();
+$user_std = $user_obj->userDetails();
+
 $obj = new FrontBackConn();
 $std = $obj->displayDataOnOrder();
+
 
 // Check whether the submit button click or not
 if (isset($_POST['submit'])){
@@ -55,17 +60,37 @@ if (isset($_POST['submit'])){
                 
                 <fieldset>
                     <legend>Delivery Details</legend>
-                    <div class="order-label">Full Name <i class="fas fa-signature"></i></div>
-                    <input type="text" name="full_name" placeholder="E.g. Tom & Jerry" class="input-responsive" required>
+                    <?php
+//                      Check whether user is available or not
+                        if (isset($_SESSION['user'])){
+                            ?>
+                            <div class="order-label">Full Name <i class="fas fa-signature"></i></div>
+                            <input type="text" name="full_name" value="<?php echo $user_std['name']?>" class="input-responsive" required>
 
-                    <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
-                    <input type="tel" name="contact" placeholder="E.g. 017xxxxxxxx" class="input-responsive" required>
+                            <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
+                            <input type="tel" name="contact" value="<?php echo $user_std['number']?>" class="input-responsive" required>
 
-                    <div class="order-label">Email <i class="fas fa-mail-bulk"></i></div>
-                    <input type="email" name="email" placeholder="E.g. hi@gmail.com" class="input-responsive" required>
+                            <div class="order-label">Email <i class="fas fa-mail-bulk"></i></div>
+                            <input type="email" name="email" value="<?php echo $user_std['email']?>" class="input-responsive" required>
 
-                    <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
-                    <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
+                            <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
+                            <textarea name="address" rows="10" class="input-responsive" required>value="<?php echo $user_std['address']?>"</textarea>
+                    <?php
+                        }
+                    else{?>
+                            <div class="order-label">Full Name <i class="fas fa-signature"></i></div>
+                            <input type="text" name="full_name" placeholder="E.g. Tom & Jerry" class="input-responsive" required>
+
+                            <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
+                            <input type="tel" name="contact" placeholder="E.g. 017xxxxxxxx" class="input-responsive" required>
+
+                            <div class="order-label">Email <i class="fas fa-mail-bulk"></i></div>
+                            <input type="email" name="email" placeholder="E.g. hello@gmail.com" class="input-responsive" required>
+
+                            <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
+                            <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
+                    <?php
+                        }?>
 
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
                 </fieldset>
