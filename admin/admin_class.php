@@ -254,6 +254,81 @@ class Admin extends Database {
         }
     }
 
+//  Reset Password section start
+//  Recovery Email  send link to reset password
+    public function recoveryEmail(){
+//      Get data from form
+        $email = $this->conn->real_escape_string($_POST['email']);
+
+//      Create Sql to check whether the email exist or not
+        $sql = "SELECT * FROM tbl_admin WHERE email = '$email'";
+
+//      Execute the query
+        $result = $this->conn->query($sql);
+
+//      Check whether the email is valid on not
+        if (!filter_var($email,FILTER_VALIDATE_EMAIL)){
+            $_SESSION['not_valid_email'] = "Warning!";
+
+        }
+
+//      Check whether the email exist or not
+        elseif ($result->num_rows){
+            $row = $result->fetch_assoc();
+            $name = $row['name'];
+            $token = $row['token'];
+            $_SESSION['email'] = $row['email'];
+
+            $subject = "Recovery Password";
+            $massage = "Hi $name, 
+                        Click the below link to reset your password
+                        http://localhost:63342/index.php/Food_Order/reset_password.php?token=$token";
+
+            $sender = "From: wowfood100@gmail.com";
+
+//          Check whether the mail is successfully send or not
+            if (mail($email, $subject, $massage, $sender)){
+                $_SESSION['sendEmail'] = 'Success!';
+                header('location: reset_password.php');
+            }else{
+                $_SESSION['sendEmail_fail'] = 'Warning!';
+            }
+        }
+        else{
+            $_SESSION['email_not_found'] = 'Warning!';
+        }
+    }
+
+//   Create function to reset password
+    public function resetPassword(){
+//      Get data from form
+        $password = md5($_POST['password']);
+        $con_password = md5($_POST['con_password']);
+        $token = $_GET['token'];
+
+//      check whether the password and confirm password match on not
+        if ($password !== $con_password){
+            $_SESSION['pass_not_match'] = "Warning!";
+
+        }
+//      check whether the password is less than 8 or not
+        elseif (strlen($_POST['password']) < 8){
+            $_SESSION['pass_8_char'] = "Warning!";
+        }
+        else{
+
+//          create Sql to change password
+            $sql = "UPDATE tbl_admin SET password = '$password' WHERE token = '$token'";
+
+//          Execute the query
+            $result = $this->conn->query($sql);
+            if ($result){
+                $_SESSION['reset_pass'] = 'Success!';
+                header('location: login.php');
+            }
+        }
+    }
+
 }
 
 
