@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
             </div>
             <button type="submit" name="submit" class="btn-primary-login">Login</button>
             <div class="text-center margin-top">
-                <a CLASS="a-color" href="#">Forgot your password?</a>
+                <a CLASS="a-color" href="recovery_admin_email.php">Forgot your password?</a>
             </div>
         </form>
     </div>
