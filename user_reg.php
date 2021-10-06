@@ -76,8 +76,13 @@ if (isset($_POST['submit'])){
     <form action="" method="post">
         <br>
         <div class="order-label">
-            <label for="Name"">Name: <i class="fas fa-signature"></i></label>
-            <input required type="text" class="input-responsive" name="name" placeholder="Name">
+            <label for="First Name"">First Name: <i class="fas fa-signature"></i></label>
+            <input required type="text" class="input-responsive" name="first_name" placeholder="First Name">
+        </div>
+        <br>
+        <div class="order-label">
+            <label for="Last Name"">Last Name: <i class="fas fa-signature"></i></label>
+            <input required type="text" class="input-responsive" name="last_name" placeholder="Last Name">
         </div>
         <br>
         <div class="order-label">
