@@ -16,23 +16,11 @@ if (isset($_POST['submit'])){
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
 
     <title>Reset Password-Food Order Restaurant</title>
 </head>
 <body>
-<!-- Navbar Section Starts Here -->
-<section class="navbar">
-    <div class="container">
-        <div class="logo">
-            <a href="index.php" title="Logo">
-                <img src="images/logo.png" alt="Restaurant Logo" class="img-responsive">
-            </a>
-        </div>
-        <div class="clearfix"></div>
-    </div>
-</section>
-<!-- Navbar Section Ends Here -->
 
 <div class="form-container">
     <h3 class="text-center">Reset Your Password</h3>
