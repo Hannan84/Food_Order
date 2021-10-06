@@ -6,7 +6,8 @@ class User extends Database {
     public function userReg(){
 
 //    1. Get data from form
-        $name = $this->conn->real_escape_string($_POST['name']);
+        $first_name = $this->conn->real_escape_string($_POST['first_name']);
+        $last_name = $this->conn->real_escape_string($_POST['last_name']);
         $email = $this->conn->real_escape_string($_POST['email']);
         $number = $this->conn->real_escape_string($_POST['number']);
         $address = $this->conn->real_escape_string($_POST['address']);
@@ -42,7 +43,7 @@ class User extends Database {
         else{
 
 //          sql query to save data into database
-            $sql1 = "INSERT INTO tbl_user VALUES (null, '$name','$email','$number','$address','$password','$token','inactive')";
+            $sql1 = "INSERT INTO tbl_user VALUES (null, '$first_name','$last_name','$email','$number','$address','$password','$token','inactive')";
 
 //          Executing query and saving data into database
             $result1 = $this->conn->query($sql1);
@@ -52,7 +53,7 @@ class User extends Database {
 
 //              create mail to email verification
                 $subject = "Email Verification";
-                $massage = "Hi, $name Click the below link to verify your account
+                $massage = "Hi, $first_name $last_name Click the below link to verify your account
                         http://localhost:63342/index.php/Food_Order/user_verify.php?token=$token";
                 $sender = "From: wowfood100@gmail.com";
 
@@ -140,7 +141,7 @@ class User extends Database {
 //      Count rows to check whether the user exist or not
         if ($result->num_rows == 1){
             $row = $result->fetch_assoc();
-            $_SESSION['name'] = $row['name'];
+            $_SESSION['name'] = $row['first_name'];
             $_SESSION['login'] = 'Success!';
             $_SESSION['user'] = $row['email'];
 
@@ -173,12 +174,13 @@ class User extends Database {
 //      Check whether the email exist or not
         elseif ($result->num_rows){
             $row = $result->fetch_assoc();
-            $name = $row['name'];
+            $first_name = $row['first_name'];
+            $last_name = $row['last_name'];
             $token = $row['token'];
             $_SESSION['email'] = $row['email'];
 
             $subject = "Recovery Password";
-            $massage = "Hi $name, 
+            $massage = "Hi $first_name $last_name,
                         Click the below link to reset your password
                         http://localhost:63342/index.php/Food_Order/reset_password.php?token=$token";
 
