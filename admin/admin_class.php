@@ -282,7 +282,7 @@ class Admin extends Database {
             $subject = "Recovery Password";
             $massage = "Hi $name, 
                         Click the below link to reset your password
-                        http://localhost:63342/index.php/Food_Order/reset_password.php?token=$token";
+                        http://localhost:63342/index.php/Food_Order/admin/reset_password.php?token=$token";
 
             $sender = "From: wowfood100@gmail.com";
 
