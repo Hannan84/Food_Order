@@ -39,6 +39,12 @@ if (isset($_POST['submit'])) {
                 <strong><?php echo $_SESSION['no-login'];?></strong> Please login to access Admin Panel.
             </div>
         <?php unset($_SESSION['no-login']); }?>
+
+        <?php if (isset($_SESSION['reset_pass'])){?>
+            <div class="alert-success">
+                <strong><?php echo $_SESSION['reset_pass'];?></strong> Password successfully change.
+            </div>
+        <?php unset($_SESSION['reset_pass']); }?>
         <form action="" method="post">
             <br>
             <div class="form-group">
