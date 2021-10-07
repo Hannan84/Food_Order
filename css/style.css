@@ -290,9 +290,15 @@ fieldset{
 .form-container{
     border: 1px solid grey;
     width: 20%;
-    margin: 10% auto;
+    margin: 0 auto;
     padding: 2%;
     border-radius: 5px;
+}
+.main_container{
+    background-image: url("../images/food_bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .a-color{
