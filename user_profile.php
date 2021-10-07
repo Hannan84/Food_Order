@@ -39,15 +39,15 @@ if (isset($_POST['pass_submit'])){
         </div>
         <div class="order-label">
             <label for="Email"">Email: <i class="fas fa-mail-bulk"></i></label>
-            <input required type="text" class="input-responsive" name="email" placeholder="Email">
+            <input type="email" class="input-responsive" value="email" readonly>
         </div>
         <div class="order-label">
             <label for="Number"">Number: <i class="fas fa-phone"></i></label>
-            <input required type="number" class="input-responsive" name="number" placeholder="Number">
+            <input type="number" class="input-responsive" name="number" placeholder="Number (optional)">
         </div>
         <div class="order-label">
             <label for="Address"">Address: <i class="fas fa-map-marker-alt"></i></label>
-            <textarea required name="address" class="input-responsive" cols="43" rows="7" placeholder="Address"></textarea>
+            <textarea name="address" class="input-responsive" cols="43" rows="7" placeholder="Address (optional)"></textarea>
         </div>
         <button type="submit" name="submit" class="btn-primary-login">Save</button>
     </form>
