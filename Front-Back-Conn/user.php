@@ -111,9 +111,9 @@ class User extends Database {
 
 //  Create function to get single user information
     public function userDetails(){
-
+        $id = $_GET['id'];
 //       Create Sql Query to show data from database
-        $sql = "SELECT * FROM tbl_user WHERE verified = 'active'";
+        $sql = "SELECT * FROM tbl_user WHERE verified = 'active' AND id = '$id'";
 
 //        Execute the query
         $result = $this->conn->query($sql);
@@ -141,10 +141,15 @@ class User extends Database {
 //      Count rows to check whether the user exist or not
         if ($result->num_rows == 1){
             $row = $result->fetch_assoc();
-            $_SESSION['name'] = $row['first_name'];
-            $_SESSION['login'] = 'Success!';
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['first_name'] = $row['first_name'];
+            $_SESSION['last_name'] = $row['last_name'];
             $_SESSION['user'] = $row['email'];
+            $_SESSION['number'] = $row['number'];
+            $_SESSION['address'] = $row['address'];
 
+//          Create section for login massage
+            $_SESSION['login'] = 'Success!';
 //          Redirect to user profile
             header('location: index.php');
         }

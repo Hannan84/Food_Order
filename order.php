@@ -4,8 +4,6 @@ include 'partial_front/navbar.php';
 
 
 $user_obj = new User();
-$user_std = $user_obj->userDetails();
-
 $obj = new FrontBackConn();
 $std = $obj->displayDataOnOrder();
 
@@ -65,24 +63,27 @@ if (isset($_POST['submit'])){
                         if (isset($_SESSION['user'])){
                             ?>
                             <div class="order-label">First Name <i class="fas fa-signature"></i></div>
-                            <input type="text" name="full_name" value="<?php echo $user_std['first_name']?>" class="input-responsive" required>
+                            <input type="text" name="first_name" value="<?php echo $_SESSION['first_name']?>" class="input-responsive" required>
 
                             <div class="order-label">Last Name <i class="fas fa-signature"></i></div>
-                            <input type="text" name="last_name" value="<?php echo $user_std['last_name']?>" class="input-responsive" required>
+                            <input type="text" name="last_name" value="<?php echo $_SESSION['last_name']?>" class="input-responsive" required>
 
                             <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
-                            <input type="tel" name="contact" value="<?php echo $user_std['number']?>" class="input-responsive" required>
+                            <input type="tel" name="contact" value="<?php echo $_SESSION['number']?>" class="input-responsive" required>
 
                             <div class="order-label">Email <i class="fas fa-mail-bulk"></i></div>
-                            <input type="email" name="email" value="<?php echo $user_std['email']?>" class="input-responsive" required>
+                            <input type="email" name="email" value="<?php echo $_SESSION['user']?>" class="input-responsive" readonly>
 
                             <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
-                            <textarea name="address" rows="10" class="input-responsive" required>value="<?php echo $user_std['address']?>"</textarea>
+                            <textarea name="address" rows="10" class="input-responsive" required><?php echo $_SESSION['address']?></textarea>
                     <?php
                         }
                     else{?>
-                            <div class="order-label">Full Name <i class="fas fa-signature"></i></div>
-                            <input type="text" name="full_name" placeholder="E.g. Tom & Jerry" class="input-responsive" required>
+                            <div class="order-label">First Name <i class="fas fa-signature"></i></div>
+                            <input type="text" name="first_name" placeholder="E.g. Tom" class="input-responsive" required>
+
+                            <div class="order-label">Last Name <i class="fas fa-signature"></i></div>
+                            <input type="text" name="last_name" placeholder="E.g. Jerry" class="input-responsive" required>
 
                             <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
                             <input type="tel" name="contact" placeholder="E.g. 017xxxxxxxx" class="input-responsive" required>

@@ -219,7 +219,8 @@ class FrontBackConn extends Database{
 
         $status = 'Ordered';
 
-        $customer_name = $this->conn->real_escape_string($_POST['full_name']);
+        $first_name = $this->conn->real_escape_string($_POST['first_name']);
+        $last_name = $this->conn->real_escape_string($_POST['last_name']);
         $customer_contact = $this->conn->real_escape_string($_POST['contact']);
         $customer_email = $this->conn->real_escape_string($_POST['email']);
         $customer_address = $this->conn->real_escape_string($_POST['address']);
@@ -227,7 +228,7 @@ class FrontBackConn extends Database{
 
 //      Save the Order in Database
  //    sql query to save data into database
-        $sql = "INSERT INTO tbl_order VALUES (null, '$food','$price','$qty','$total','$order_date','$status','$customer_name','$customer_contact','$customer_email','$customer_address')";
+        $sql = "INSERT INTO tbl_order VALUES (null, '$food','$price','$qty','$total','$order_date','$status','$first_name','$last_name','$customer_contact','$customer_email','$customer_address')";
 
 //    Executing query and saving data into database
         $result = $this->conn->query($sql);

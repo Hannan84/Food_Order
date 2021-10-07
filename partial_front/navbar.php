@@ -2,9 +2,6 @@
 // include FrontBackConn class
 include ('Front-Back-Conn/FrontBackConn.php');
 include 'Front-Back-Conn/user.php';
-
-$obj = new User();
-$userId = $obj->userDetails();
 ?>
 
 <!DOCTYPE html>
@@ -54,15 +51,15 @@ $userId = $obj->userDetails();
                 <?php } ?>
                 <?php
                 if (isset($_SESSION['user'])){
-                        if (isset($_SESSION['name'])){?>
+                        if (isset($_SESSION['first_name'])){?>
                     <li>
                         <div class="dropdown">
                             <button class="dropbtn" onclick="myFunction()">
-                                <i class="fas fa-user-circle"></i> <?php echo $_SESSION['name']?> <i class="fas fa-caret-down"></i>
+                                <i class="fas fa-user-circle"></i> <?php echo $_SESSION['first_name']?> <i class="fas fa-caret-down"></i>
                             </button>
                             <div class="dropdown-content" id="myDropdown">
                                 <a href="#">My orders</a>
-                                <a href="user_profile.php?id=<?php echo $userId['id']?>">Profile</a>
+                                <a href="user_profile.php?id=<?php echo $_SESSION['id']?>">Profile</a>
                                 <a href="user_logout.php">Logout</a>
                             </div>
                         </div>
