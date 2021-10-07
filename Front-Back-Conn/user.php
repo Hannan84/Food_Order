@@ -228,4 +228,78 @@ class User extends Database {
             }
         }
     }
+
+//    Update Data into user table
+    public function updateUser(){
+
+//        Get data from form
+        $id = $_GET['id'];
+        $first_name = $this->conn->real_escape_string($_POST['first_name']);
+        $last_name = $this->conn->real_escape_string($_POST['last_name']);
+        $email     = $this->conn->real_escape_string($_POST['email']);
+        $number     = $this->conn->real_escape_string($_POST['number']);
+        $address     = $this->conn->real_escape_string($_POST['address']);
+
+//        Sql Query to update data into database
+        $sql = "UPDATE tbl_user SET first_name = '$first_name', last_name = '$last_name', email = '$email', number = '$number', address = '$address' WHERE id = '$id'";
+
+//        Execute the Query
+        $result = $this->conn->query($sql);
+
+//        Check whether the Query is execute or not
+        if ($result == true){
+            $_SESSION['update'] = "Success!";
+        }else{
+            $_SESSION['not_update'] = "Warning!";
+        }
+    }
+
+//    Change user password into user table
+    public function changePassword(){
+//        Get the data from form
+        $id = $_GET['id'];
+        $current_pass = md5($_POST['curr_password']);
+        $new_pass = md5($_POST['new_password']);
+        $confirm_pass = md5($_POST['con_password']);
+
+//        Create Sql query to check id and current password exist or not
+        $sql = "SELECT * FROM tbl_user WHERE id = '$id' AND password = '$current_pass'";
+
+//        Execute the Query
+        $result = $this->conn->query($sql);
+
+
+//        Check whether the Query is execute or not
+        if ($result == true) {
+//            Check whether the value is available or not
+            if ($result->num_rows == 1) {
+//                check whether the new password and confirm password are match or not
+                if ($new_pass === $confirm_pass) {
+//                      check whether the password is greater than or equal 8 or not
+                    if (strlen($_POST['new_password']) >= 8){
+//                          Create sql Query to change password
+                        $sql2 = "UPDATE tbl_user SET password = '$new_pass' WHERE id ='$id'";
+
+//                          Execute the Query
+                        $result2 = $this->conn->query($sql2);
+//                          Check whether the Query execute or not
+                        if ($result2 == true) {
+                            $_SESSION['pass-change'] = 'Success!';
+                        }
+                    }else{
+//                          create session to massage password minimum to be 8 characters
+                        $_SESSION['pass_8_char'] = 'Warning!';
+                    }
+                } else {
+//                      massage to password match or not
+                    $_SESSION['pass-not-match'] = 'Warning!';
+                }
+            } else {
+//                    massage user found or not
+                $_SESSION['curr-pass-not-match'] = 'Warning!';
+            }
+        }else {
+            $_SESSION['user-not-found'] = 'Warning!';
+        }
+    }
 }

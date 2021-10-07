@@ -28,6 +28,13 @@ if (isset($_POST['pass_submit'])){
             <strong><?php echo $_SESSION['not_update'];?></strong> Failed to Update.
         </div>
     <?php unset($_SESSION['not_update']); }?>
+
+    <?php if (isset($_SESSION['update'])){?>
+        <div class="alert-warning">
+            <strong><?php echo $_SESSION['update'];?></strong> Your profile is updated.
+        </div>
+    <?php unset($_SESSION['update']); }?>
+
     <form action="" method="post">
         <div class="order-label">
             <label for="First Name"">First Name: <i class="fas fa-signature"></i></label>
@@ -52,17 +59,22 @@ if (isset($_POST['pass_submit'])){
         <button type="submit" name="submit" class="btn-primary-login">Save</button>
     </form>
     <br/><br/><br/><br/>
+
     <h3 class="text-center" style="border-bottom: 1px solid #d4d3d3; padding-bottom: 25px">Password</h3>
     <form action="" method="post">
         <br/>
         <div class="order-label">
             <label for="Current Password"">Current Password: <i class="fas fa-key"></i></label>
-            <input required type="password" class="input-responsive" name="current_pass" placeholder="Current Password">
+            <input required type="password" class="input-responsive" name="curr_password" placeholder="Current Password">
         </div>
         <br>
         <div class="order-label">
             <label for="New Password"">New Password: <i class="fas fa-key"></i></label>
             <input required type="password" class="input-responsive" name="new_password" placeholder="New Password">
+        </div>
+        <div class="order-label">
+            <label for="Confirm Password"">Confirm Password: <i class="fas fa-key"></i></label>
+            <input required type="password" class="input-responsive" name="con_password" placeholder="Confirm Password">
         </div>
         <button type="submit" name="pass_submit" class="btn-primary-login">Save</button>
     </form>
