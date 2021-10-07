@@ -39,7 +39,7 @@ if (isset($_POST['pass_submit'])){
         </div>
         <div class="order-label">
             <label for="Email"">Email: <i class="fas fa-mail-bulk"></i></label>
-            <input type="email" class="input-responsive" value="email" readonly>
+            <input type="email" class="input-responsive" name="email" value="email" readonly>
         </div>
         <div class="order-label">
             <label for="Number"">Number: <i class="fas fa-phone"></i></label>
