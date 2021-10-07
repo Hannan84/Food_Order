@@ -92,12 +92,12 @@ if (isset($_POST['submit'])){
         <br>
         <div class="order-label">
             <label for="Number"">Number: <i class="fas fa-phone"></i></label>
-            <input required type="number" class="input-responsive" name="number" placeholder="Number">
+            <input type="number" class="input-responsive" name="number" placeholder="Number (optional)">
         </div>
         <br>
         <div class="order-label">
             <label for="Address"">Address: <i class="fas fa-map-marker-alt"></i></label>
-            <textarea required name="address" class="input-responsive" cols="43" rows="7" placeholder="Address"></textarea>
+            <textarea name="address" class="input-responsive" cols="43" rows="7" placeholder="Address (optional)"></textarea>
         </div>
         <br>
         <div class="order-label">
