@@ -64,8 +64,11 @@ if (isset($_POST['submit'])){
 //                      Check whether user is available or not
                         if (isset($_SESSION['user'])){
                             ?>
-                            <div class="order-label">Full Name <i class="fas fa-signature"></i></div>
-                            <input type="text" name="full_name" value="<?php echo $user_std['name']?>" class="input-responsive" required>
+                            <div class="order-label">First Name <i class="fas fa-signature"></i></div>
+                            <input type="text" name="full_name" value="<?php echo $user_std['first_name']?>" class="input-responsive" required>
+
+                            <div class="order-label">Last Name <i class="fas fa-signature"></i></div>
+                            <input type="text" name="last_name" value="<?php echo $user_std['last_name']?>" class="input-responsive" required>
 
                             <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
                             <input type="tel" name="contact" value="<?php echo $user_std['number']?>" class="input-responsive" required>
