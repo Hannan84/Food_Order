@@ -2,6 +2,9 @@
 // include FrontBackConn class
 include ('Front-Back-Conn/FrontBackConn.php');
 include 'Front-Back-Conn/user.php';
+
+$obj = new User();
+$userId = $obj->userDetails();
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +62,7 @@ include 'Front-Back-Conn/user.php';
                             </button>
                             <div class="dropdown-content" id="myDropdown">
                                 <a href="#">My orders</a>
-                                <a href="user_profile.php">Profile</a>
+                                <a href="user_profile.php?id=<?php echo $userId['id']?>">Profile</a>
                                 <a href="user_logout.php">Logout</a>
                             </div>
                         </div>

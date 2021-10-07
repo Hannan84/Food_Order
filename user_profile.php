@@ -9,6 +9,8 @@ if (!isset($_SESSION['user'])){
 }
 // Create instant of user class
 $obj = new User();
+// Call userDetails function to get user data
+$userData = $obj->userDetails();
 // Check whether the user value is execute or not
 if (isset($_POST['submit'])){
 //    Called function for user data update
@@ -22,7 +24,6 @@ if (isset($_POST['pass_submit'])){
 ?>
 <div class="form-container" style="width: 35% ; border: none">
     <h3 class="text-center" style="border-bottom: 1px solid #d4d3d3; padding-bottom: 25px">My Profile</h3>
-    <br/>
     <?php if (isset($_SESSION['not_update'])){?>
         <div class="alert-warning">
             <strong><?php echo $_SESSION['not_update'];?></strong> Failed to Update.
@@ -30,31 +31,62 @@ if (isset($_POST['pass_submit'])){
     <?php unset($_SESSION['not_update']); }?>
 
     <?php if (isset($_SESSION['update'])){?>
-        <div class="alert-warning">
+        <div class="alert-success">
             <strong><?php echo $_SESSION['update'];?></strong> Your profile is updated.
         </div>
     <?php unset($_SESSION['update']); }?>
 
+    <?php if (isset($_SESSION['pass-change'])){?>
+        <div class="alert-success">
+            <strong><?php echo $_SESSION['pass-change'];?></strong> Your Password Successfully Change.
+        </div>
+    <?php unset($_SESSION['pass-change']);}?>
+
+    <?php if (isset($_SESSION['pass-not-match'])){?>
+        <div class="alert-warning">
+            <strong><?php echo $_SESSION['pass-not-match'];?></strong> New Password and Confirm Password Dose Not Match.
+        </div>
+    <?php unset($_SESSION['pass-not-match']); }?>
+
+    <?php if (isset($_SESSION['curr-pass-not-match'])){?>
+        <div class="alert-warning">
+            <strong><?php echo $_SESSION['curr-pass-not-match'];?></strong> Current Password Not Match.
+        </div>
+    <?php unset($_SESSION['curr-pass-not-match']); }?>
+
+    <?php if (isset($_SESSION['pass_8_char'])){?>
+        <div class="alert-warning">
+            <strong><?php echo $_SESSION['pass_8_char'];?></strong> Password minimum to be 8 characters.
+        </div>
+    <?php unset($_SESSION['pass_8_char']); }?>
+
+    <?php if (isset($_SESSION['user-not-found'])){?>
+        <div class="alert-warning">
+            <strong><?php echo $_SESSION['user-not-found'];?></strong> User Not Found.
+        </div>
+    <?php unset($_SESSION['user-not-found']); }?>
+
     <form action="" method="post">
+        <br/>
         <div class="order-label">
             <label for="First Name"">First Name: <i class="fas fa-signature"></i></label>
-            <input required type="text" class="input-responsive" name="first_name" placeholder="First Name">
+            <input required type="text" class="input-responsive" name="first_name" value="<?php echo $userData['first_name']?>">
         </div>
         <div class="order-label">
             <label for="Last Name"">Last Name: <i class="fas fa-signature"></i></label>
-            <input required type="text" class="input-responsive" name="last_name" placeholder="Last Name">
+            <input required type="text" class="input-responsive" name="last_name" value="<?php echo $userData['last_name']?>">
         </div>
         <div class="order-label">
             <label for="Email"">Email: <i class="fas fa-mail-bulk"></i></label>
-            <input type="email" class="input-responsive" name="email" value="email" readonly>
+            <input type="email" class="input-responsive" name="email" value="<?php echo $userData['email']?>" readonly>
         </div>
         <div class="order-label">
-            <label for="Number"">Number: <i class="fas fa-phone"></i></label>
-            <input type="number" class="input-responsive" name="number" placeholder="Number (optional)">
+            <label for="Number"">Number: (optional) <i class="fas fa-phone"></i></label>
+            <input type="number" class="input-responsive" name="number" value="<?php echo $userData['number']?>">
         </div>
         <div class="order-label">
-            <label for="Address"">Address: <i class="fas fa-map-marker-alt"></i></label>
-            <textarea name="address" class="input-responsive" cols="43" rows="7" placeholder="Address (optional)"></textarea>
+            <label for="Address"">Address: (optional) <i class="fas fa-map-marker-alt"></i></label>
+            <textarea name="address" class="input-responsive" cols="43" rows="7"><?php echo $userData['address']?></textarea>
         </div>
         <button type="submit" name="submit" class="btn-primary-login">Save</button>
     </form>
@@ -67,7 +99,6 @@ if (isset($_POST['pass_submit'])){
             <label for="Current Password"">Current Password: <i class="fas fa-key"></i></label>
             <input required type="password" class="input-responsive" name="curr_password" placeholder="Current Password">
         </div>
-        <br>
         <div class="order-label">
             <label for="New Password"">New Password: <i class="fas fa-key"></i></label>
             <input required type="password" class="input-responsive" name="new_password" placeholder="New Password">
