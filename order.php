@@ -77,23 +77,6 @@ if (isset($_POST['submit'])){
                             <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
                             <textarea name="address" rows="10" class="input-responsive" required><?php echo $_SESSION['address']?></textarea>
                     <?php
-                        }
-                    else{?>
-                            <div class="order-label">First Name <i class="fas fa-signature"></i></div>
-                            <input type="text" name="first_name" placeholder="E.g. Tom" class="input-responsive" required>
-
-                            <div class="order-label">Last Name <i class="fas fa-signature"></i></div>
-                            <input type="text" name="last_name" placeholder="E.g. Jerry" class="input-responsive" required>
-
-                            <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
-                            <input type="tel" name="contact" placeholder="E.g. 017xxxxxxxx" class="input-responsive" required>
-
-                            <div class="order-label">Email <i class="fas fa-mail-bulk"></i></div>
-                            <input type="email" name="email" placeholder="E.g. hello@gmail.com" class="input-responsive" required>
-
-                            <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
-                            <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
-                    <?php
                         }?>
 
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
