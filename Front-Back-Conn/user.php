@@ -254,6 +254,12 @@ class User extends Database {
 //        Check whether the Query is execute or not
         if ($result == true){
             $_SESSION['update'] = "Success!";
+//          Create session to update user data in order page
+            $_SESSION['first_name'] = $first_name;
+            $_SESSION['last_name'] = $last_name;
+            $_SESSION['user'] = $email;
+            $_SESSION['number'] = $number;
+            $_SESSION['address'] = $address;
         }else{
             $_SESSION['not_update'] = "Warning!";
         }
