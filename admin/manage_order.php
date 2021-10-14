@@ -21,7 +21,7 @@ include 'Order.php';
         <?php unset($_SESSION['update']);}?>
         <br/><br/>
 
-        <table class="tbl-full text-center">
+        <table class="tbl-full">
             <tr>
                 <th>S.N.</th>
                 <th>Food</th>
@@ -30,7 +30,8 @@ include 'Order.php';
                 <th>Total</th>
                 <th>Order Date</th>
                 <th>Status</th>
-                <th>Customer Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
                 <th>Customer Contact</th>
                 <th>Customer Email</th>
                 <th>Customer Address</th>
@@ -71,7 +72,8 @@ include 'Order.php';
                         }
                         ?>
                     </td>
-                    <td><?php echo $value['customer_name']?></td>
+                    <td><?php echo $value['first_name']?></td>
+                    <td><?php echo $value['last_name']?></td>
                     <td><?php echo $value['customer_contact']?></td>
                     <td><?php echo $value['customer_email']?></td>
                     <td><?php echo $value['customer_address']?></td>

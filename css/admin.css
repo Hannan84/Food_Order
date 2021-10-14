@@ -69,13 +69,14 @@
     padding: 4%;
     width: 150%;
 }
-table tr th{
-    border-bottom: 1px solid black;
-    padding: 1%;
-    text-align: left;
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
 }
-table tr td{
-    padding: 1%;
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
 }
 .btn-primary{
     background-color: #1e90ff;
