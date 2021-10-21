@@ -53,8 +53,9 @@ class User extends Database {
 
 //              create mail to email verification
                 $subject = "Email Verification";
-                $massage = "Hi, $first_name $last_name Click the below link to verify your account
-                        http://localhost:63342/index.php/Food_Order/user_verify.php?token=$token";
+                $massage = "Hi $first_name $last_name,
+                            Click the below link to verify your account
+                            http://localhost:63342/index.php/Food_Order/user_verify.php?token=$token";
                 $sender = "From: wowfood100@gmail.com";
 
 //              Check whether the mail is successfully send or not
