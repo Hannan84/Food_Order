@@ -65,6 +65,9 @@ include 'Front-Back-Conn/user.php';
                         </div>
                     </li>
                 <?php } }?>
+                <li>
+                    <a href="index.php"><i class="fas fa-shopping-cart"></i> (0)</a>
+                </li>
             </ul>
         </div>
 
