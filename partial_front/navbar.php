@@ -46,7 +46,7 @@ include 'Front-Back-Conn/user.php';
                 <?php
                 if (!isset($_SESSION['user'])){?>
                     <li>
-                    <a href="user_login.php"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a href="user_login.php">Login</a>
                     </li>
                 <?php } ?>
                 <?php
