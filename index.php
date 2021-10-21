@@ -63,30 +63,32 @@ include 'partial_front/navbar.php';
         $data = $obj->displayHomePageFood();
         foreach ($data as $value){?>
             <div class="food-menu-box">
-                <div class="food-menu-img">
-                    <?php
-//                   Check whether image is available or not
-                    if ($value['image'] != ""){
-                        ?>
-                        <img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="img-responsive img-curve"  width="100px" height="100px">
+                <form action="">
+                    <div class="food-menu-img">
                         <?php
-                    }
-                    else{
-                        echo "<div style='color: red'> Image Not Added</div>";
-                    }
-                    ?>
-                </div>
+    //                   Check whether image is available or not
+                        if ($value['image'] != ""){
+                            ?>
+                            <img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="img-responsive img-curve"  width="100px" height="100px">
+                            <?php
+                        }
+                        else{
+                            echo "<div style='color: red'> Image Not Added</div>";
+                        }
+                        ?>
+                    </div>
 
-                <div class="food-menu-desc">
-                    <h4><?php echo $value['title']?></h4>
-                    <p class="food-price"><?php echo $value['price']?> Tk</p>
-                    <p class="food-detail">
-                        <?php echo $value['description']?>
-                    </p>
-                    <br>
+                    <div class="food-menu-desc">
+                        <h4><?php echo $value['title']?></h4>
+                        <p class="food-price"><?php echo $value['price']?> Tk</p>
+                        <p class="food-detail">
+                            <?php echo $value['description']?>
+                        </p>
+                        <br>
 
-                    <a href="order.php?food_id=<?php echo $value['id']?>" class="btn btn-primary">Order Now</a>
-                </div>
+                        <a href="order.php?food_id=<?php echo $value['id']?>" class="btn btn-primary">Add To Cart</a>
+                    </div>
+                </form>
             </div>
         <?php }?>
 
