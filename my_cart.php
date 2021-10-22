@@ -5,6 +5,7 @@ if (isset($_GET['id'])){
     $image = $_POST['image'];
     $title = $_POST['title'];
     $price = $_POST['price'];
+    $quantity = $_POST['qty'];
     $description = $_POST['description'];
 
     if (isset($_SESSION['myCart'][$id])){
@@ -16,7 +17,7 @@ if (isset($_GET['id'])){
         ";
     }
     else{
-        $_SESSION['myCart'][$id] = array($id,$image,$title,$price,$description);
+        $_SESSION['myCart'][$id] = array('id' => $id,'image' => $image,'title' => $title,'price' => $price,'qty' => $quantity,'description' => $description);
         header('location: index.php');
     }
 

@@ -18,6 +18,26 @@
     margin: 0 auto;
     padding: 1%;
 }
+.main_content{
+    background-color: whitesmoke;
+    padding: 3% 0;
+}
+.tbl-full{
+    width: 100%;
+}
+.form_input{
+    padding: 4%;
+    width: 150%;
+}
+table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
 .img-responsive{
     width: 100%;
 }
