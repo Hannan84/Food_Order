@@ -63,7 +63,7 @@ include 'partial_front/navbar.php';
         $data = $obj->displayHomePageFood();
         foreach ($data as $value){?>
             <div class="food-menu-box">
-                <form action="">
+                <form action="my_cart.php?id=<?php echo $value['id']?>" method="post">
                     <div class="food-menu-img">
                         <?php
     //                   Check whether image is available or not
@@ -85,8 +85,7 @@ include 'partial_front/navbar.php';
                             <?php echo $value['description']?>
                         </p>
                         <br>
-
-                        <a href="order.php?food_id=<?php echo $value['id']?>" class="btn btn-primary">Add To Cart</a>
+                        <button type="submit" name="submit" class="btn btn-primary">Add To Cart</button>
                     </div>
                 </form>
             </div>
