@@ -2,6 +2,11 @@
 // include FrontBackConn class
 include ('Front-Back-Conn/FrontBackConn.php');
 include 'Front-Back-Conn/user.php';
+
+$count = 0;
+if (isset($_SESSION['myCart'])){
+    $count = count($_SESSION['myCart']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +54,9 @@ include 'Front-Back-Conn/user.php';
                     <a href="user_login.php">Login</a>
                     </li>
                 <?php } ?>
+                <li>
+                    <a href="cartView.php"><i class="fas fa-shopping-cart"></i> <?php echo $count;?></a>
+                </li>
                 <?php
                 if (isset($_SESSION['user'])){
                         if (isset($_SESSION['first_name'])){?>
@@ -65,9 +73,6 @@ include 'Front-Back-Conn/user.php';
                         </div>
                     </li>
                 <?php } }?>
-                <li>
-                    <a href="index.php"><i class="fas fa-shopping-cart"></i> (0)</a>
-                </li>
             </ul>
         </div>
 

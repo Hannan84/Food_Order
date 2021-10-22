@@ -85,6 +85,10 @@ include 'partial_front/navbar.php';
                             <?php echo $value['description']?>
                         </p>
                         <br>
+                        <input type="hidden" name="image" value="<?php echo $value['image']?>">
+                        <input type="hidden" name="title" value="<?php echo $value['title']?>">
+                        <input type="hidden" name="price" value="<?php echo $value['price']?>">
+                        <input type="hidden" name="description" value="<?php echo $value['description']?>">
                         <button type="submit" name="submit" class="btn btn-primary">Add To Cart</button>
                     </div>
                 </form>
