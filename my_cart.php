@@ -1,12 +1,15 @@
 <?php
 session_start();
+// Get data from form
+$id = $_GET['id'];
+$image = $_POST['image'];
+$title = $_POST['title'];
+$price = $_POST['price'];
+$quantity = $_POST['qty'];
+$description = $_POST['description'];
+
+// insert data into session for add to cart
 if (isset($_GET['id'])){
-    $id = $_GET['id'];
-    $image = $_POST['image'];
-    $title = $_POST['title'];
-    $price = $_POST['price'];
-    $quantity = $_POST['qty'];
-    $description = $_POST['description'];
 
     if (isset($_SESSION['myCart'][$id])){
         echo "
@@ -21,5 +24,9 @@ if (isset($_GET['id'])){
         header('location: index.php');
     }
 
-
+}
+// update session value for added quantity to get individual id
+if ((isset($_GET['id'])) and (isset($_GET['action']) == 'add')){
+    $_SESSION['myCart'][$id] = array('id' => $id,'image' => $image,'title' => $title,'price' => $price,'qty' => $quantity,'description' => $description);
+    header('location: cartView.php');
 }

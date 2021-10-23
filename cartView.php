@@ -28,13 +28,16 @@ include 'partial_front/navbar.php';
                 $sn = 1;
                 if (isset($_SESSION['myCart'])){
                 foreach ($_SESSION['myCart'] as $value){?>
+                    <form action="my_cart.php?action=add&id=<?php echo $value['id']?>" method="post">
                     <tr>
                         <td><?php echo $sn++ ?></td>
                         <td><?php echo $value['title']?></td>
+                        <input type="hidden" name="title" value="<?php echo $value['title']?>">
                         <td width="500" height="80"><?php echo $value['description']?></td>
+                        <input type="hidden" name="description" value="<?php echo $value['description']?>">
                         <td>
                             <?php
-                            //                        Check whether image is available or not
+//                        Check whether image is available or not
                             if ($value['image'] != ""){
                                 ?>
                                 <img src="images/food/<?php echo $value['image'];?>" alt="Pizza"
@@ -46,19 +49,25 @@ include 'partial_front/navbar.php';
                             }
                             ?>
                         </td>
-                        <td><input type="number" name="qty" value="<?php echo $value['qty']?>" min="1" max="50"  style="width: 80px; height: 23px; background-color: whitesmoke" required"></td>
+                        <input type="hidden" name="image" value="<?php echo $value['image']?>">
+                        <td>
+                            <input type="number" name="qty" value="<?php echo $value['qty']?>" min="1" max="50"
+                                   style="width: 80px; height: 23px; background-color: whitesmoke" required">
+                        </td>
                         <td><?php echo $value['price']?> Tk</td>
+                        <input type="hidden" name="price" value="<?php echo $value['price']?>">
                         <td><?php echo number_format($value['price']*$value['qty'],2)?> Tk</td>
                         <td>
-                            <a href="cart_delete.php?id=<?php echo $value['id'];?>"
-                               class="btn-secondary" title="update"><i class="fas fa-edit"></i></a>
+                            <button type="submit" name="qty_add" class="btn-secondary" style="border: none; cursor: pointer"
+                                    title="Quantity Add"><i class="far fa-plus-square"></i></button>
 
                             <a class="btn-danger" onclick="return confirm('Are You Sure?')"
                                href="cart_delete.php?id=<?php echo $value['id'];?>"
                                title="delete"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
-                     <?php $total += $value['price']*$value['qty']?>
+                    </form>
+                    <?php $total += $value['price']*$value['qty']?>
                 <?php }}?>
                     <tr>
                         <th></th><th></th><th></th><th></th><th></th><th>Total Amount = </th><th><?php echo number_format($total,2)?> Tk</th><th></th
