@@ -10,8 +10,15 @@ include 'partial_front/navbar.php';
 
     <section class="main_content">
         <div class="container">
-            <h1>My Cart</h1>
+            <h2 class="text-center">My Cart</h2>
             <br>
+            <?php
+            if (!isset($_SESSION['myCart']) || count($_SESSION['myCart']) == 0){
+                echo "<h1 class='text-center'>Your Cart is Empty</h1>";
+            }
+            else {?>
+
+
             <table class="tbl-full">
                 <tr>
                     <th>S.N.</th>
@@ -73,7 +80,7 @@ include 'partial_front/navbar.php';
                         <th></th><th></th><th></th><th></th><th></th><th>Total Amount = </th><th><?php echo number_format($total,2)?> Tk</th><th></th
                     </tr>
             </table>
-
+            <?php } ?>
         </div>
     </section>
 
