@@ -30,7 +30,13 @@ if ((isset($_GET['id'])) and (isset($_GET['Addition']) == 'add') and isset($_POS
     $_SESSION['myCart'][$id] = array('id' => $id,'image' => $image,'title' => $title,'price' => $price,'qty' => $quantity+1,'description' => $description);
     header('location: cartView.php');
 }
+// update session value for subtraction quantity to get individual id
 elseif ((isset($_GET['id'])) and (isset($_GET['Subtraction']) == 'sub') and isset($_POST['qty_sub'])){
-    $_SESSION['myCart'][$id] = array('id' => $id,'image' => $image,'title' => $title,'price' => $price,'qty' => $quantity-1,'description' => $description);
+    if($quantity == 1){
+        $quantity = $quantity;
+    }else{
+        $quantity = $quantity-1;
+    }
+    $_SESSION['myCart'][$id] = array('id' => $id,'image' => $image,'title' => $title,'price' => $price,'qty' => $quantity,'description' => $description);
     header('location: cartView.php');
 }

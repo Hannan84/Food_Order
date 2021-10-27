@@ -26,30 +26,36 @@ $std = $obj->displayTitleBasedOnClick();
             $data = $obj->displayFoodBasedOnClick();
             foreach ($data as $value){?>
                 <div class="food-menu-box">
-                    <div class="food-menu-img">
-                        <?php
-//                   Check whether image is available or not
-                        if ($value['image'] != ""){
-                            ?>
-                            <img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="img-responsive img-curve"  width="100px" height="100px">
+                    <form action="my_cart.php?id=<?php echo $value['id']?>" method="post">
+                        <div class="food-menu-img">
                             <?php
-                        }
-                        else{
-                            echo "<div style='color: red'> Image Not Added</div>";
-                        }
-                        ?>
-                    </div>
+    //                   Check whether image is available or not
+                            if ($value['image'] != ""){
+                                ?>
+                                <img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="img-responsive img-curve"  width="100px" height="100px">
+                                <?php
+                            }
+                            else{
+                                echo "<div style='color: red'> Image Not Added</div>";
+                            }
+                            ?>
+                        </div>
 
-                    <div class="food-menu-desc">
-                        <h4><?php echo $value['title']?></h4>
-                        <p class="food-price"><?php echo $value['price']?> Tk</p>
-                        <p class="food-detail">
-                            <?php echo $value['description']?>
-                        </p>
-                        <br>
-
-                        <a href="order.php?food_id=<?php echo $value['id']?>" class="btn btn-primary">Order Now</a>
-                    </div>
+                        <div class="food-menu-desc">
+                            <h4><?php echo $value['title']?></h4>
+                            <p class="food-price"><?php echo $value['price']?> Tk</p>
+                            <p class="food-detail">
+                                <?php echo $value['description']?>
+                            </p>
+                            <br>
+                            <input type="hidden" name="image" value="<?php echo $value['image']?>">
+                            <input type="hidden" name="title" value="<?php echo $value['title']?>">
+                            <input type="hidden" name="price" value="<?php echo $value['price']?>">
+                            <input type="hidden" name="description" value="<?php echo $value['description']?>">
+                            <input type="number" name="qty" value="1" min="1" max="50"  style="width: 90px; height: 23px; border-radius: 5px" placeholder="Quantity" required">
+                            <button type="submit" name="submit" class="btn btn-primary">Add To Cart</button>
+                        </div>
+                    </form>
                 </div>
             <?php }?>
 

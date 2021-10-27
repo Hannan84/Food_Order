@@ -1,8 +1,6 @@
 <?php
-
 // include navbar section
 include 'partial_front/navbar.php';
-
 ?>
 
 
@@ -60,10 +58,10 @@ include 'partial_front/navbar.php';
                         <input type="hidden" name="image" value="<?php echo $value['image']?>">
                         <td>
                             <div class="text-center" style="border: 1px solid grey; width: 60px;height: 25px;padding-top: 6px;margin-left: 12px">
-                                <button style="border: none;padding-right: 5px;cursor: pointer" type="submit" name="qty_add" title="Quantity Add">+</button>
-                                <input type="number" name="qty" value="<?php if ($value['qty'] < 0){echo $value['qty']*0;}else{echo $value['qty'];}?>">
-                                <span><?php if ($value['qty'] < 0){echo $value['qty']*0;}else{echo $value['qty'];}?></span>
                                 <button style="border: none;padding-left: 5px;cursor: pointer" type="submit" name="qty_sub" title="Quantity Sub">-</button>
+                                <input type="hidden" name="qty" value="<?php echo $value['qty']?>">
+                                <span><?php echo $value['qty']?></span>
+                                <button style="border: none;padding-right: 5px;cursor: pointer" type="submit" name="qty_add" title="Quantity Add">+</button>
                             </div>
                         </td>
                         <td><?php echo $value['price']?> Tk</td>
