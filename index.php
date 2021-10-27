@@ -82,7 +82,7 @@ include 'partial_front/navbar.php';
                         <h4><?php echo $value['title']?></h4>
                         <p class="food-price"><?php echo $value['price']?> Tk</p>
                         <p class="food-detail">
-                            <?php echo $value['description']?>
+                            <?php echo preg_replace('/((\w+\W*){'.(15).'}(\w+))(.*)/', '${1}', $value['description']);?>
                         </p>
                         <br>
                         <input type="hidden" name="image" value="<?php echo $value['image']?>">
