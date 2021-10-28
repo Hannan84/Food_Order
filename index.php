@@ -63,7 +63,6 @@ include 'partial_front/navbar.php';
         $data = $obj->displayHomePageFood();
         foreach ($data as $value){?>
             <div class="food-menu-box">
-                <form action="my_cart.php?id=<?php echo $value['id']?>" method="post">
                     <div class="food-menu-img">
                         <?php
     //                   Check whether image is available or not
@@ -85,14 +84,8 @@ include 'partial_front/navbar.php';
                             <?php echo preg_replace('/((\w+\W*){'.(13).'}(\w+))(.*)/', '${1}', $value['description']);?>
                         </p>
                         <br>
-                        <input type="hidden" name="image" value="<?php echo $value['image']?>">
-                        <input type="hidden" name="title" value="<?php echo $value['title']?>">
-                        <input type="hidden" name="price" value="<?php echo $value['price']?>">
-                        <input type="hidden" name="description" value="<?php echo $value['description']?>">
-                        <input type="number" name="qty" value="1" min="1" max="50"  style="width: 90px; height: 23px; border-radius: 5px" placeholder="Quantity" required">
-                        <button type="submit" name="submit" class="btn btn-primary">Add To Cart</button>
+                        <a href="food_veiw.php?id=<?php echo $value['id']?>" class="btn btn-primary">View Food</a>
                     </div>
-                </form>
             </div>
         <?php }?>
 
