@@ -144,6 +144,22 @@ class FrontBackConn extends Database{
         }
     }
 
+//   Create function for View food from food table
+    public function viewFood(){
+//        Get id from form
+        $id = $_GET['id'];
+
+//        Create sql query to show data from database
+        $sql = "SELECT * FROM tbl_food WHERE id = '$id'";
+
+//        Execute the query
+        $result = $this->conn->query($sql);
+
+//      Get the value from database
+        $row = $result->fetch_assoc();
+        return $row;
+    }
+
 //    Display Foods for food page from Food Table
     public function displayFoodSearch()
     {
