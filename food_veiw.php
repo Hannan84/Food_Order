@@ -3,7 +3,8 @@
 // include navbar section
 include 'partial_front/navbar.php';
 
-
+$obj = new FrontBackConn();
+$value = $obj->viewFood();
 ?>
 
 <?php if (isset($_SESSION['order'])){?>
@@ -21,10 +22,10 @@ include 'partial_front/navbar.php';
                     <form action="my_cart.php?id=<?php echo $value['id']?>" method="post">
                         <div class="food-menu-img">
                             <?php
-                            //                   Check whether image is available or not
+//                   Check whether image is available or not
                             if ($value['image'] != ""){
                                 ?>
-                                <img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="img-responsive img-curve"  width="100px" height="100px">
+                                <img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="img-responsive img-curve">
                                 <?php
                             }
                             else{
