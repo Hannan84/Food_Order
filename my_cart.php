@@ -21,7 +21,7 @@ if (isset($_GET['id'])){
     }
     else{
         $_SESSION['myCart'][$id] = array('id' => $id,'image' => $image,'title' => $title,'price' => $price,'qty' => $quantity,'description' => $description);
-        header('location: food_view.php');
+        header('location: index.php');
     }
 
 }

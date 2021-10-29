@@ -1,7 +1,7 @@
 <?php
-if (!isset($_GET['id'])){
-    header('location: index.php');
-}
+//if (!isset($_GET['id'])){
+//    header('location: index.php');
+//}
 // include navbar section
 include 'partial_front/navbar.php';
 
