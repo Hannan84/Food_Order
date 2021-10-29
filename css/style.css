@@ -253,6 +253,23 @@ fieldset{
     float: left;
     margin-left: 8%;
 }
+.food-view-box{
+    width: 90%;
+    margin: 1%;
+    padding: 6%;
+    float: left;
+}
+
+.food-view-img{
+    width: 30%;
+    float: left;
+}
+
+.food-view-desc{
+    width: 50%;
+    float: left;
+    margin-left:5%;
+}
 
 .food-price{
     font-size: 1.2rem;

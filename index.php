@@ -68,7 +68,7 @@ include 'partial_front/navbar.php';
     //                   Check whether image is available or not
                         if ($value['image'] != ""){
                             ?>
-                            <img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="img-responsive img-curve"  width="100px" height="100px">
+                            <a href="food_view.php?id=<?php echo $value['id']?>"><img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="img-responsive img-curve"  width="100px" height="100px"></a>
                             <?php
                         }
                         else{
@@ -78,13 +78,11 @@ include 'partial_front/navbar.php';
                     </div>
 
                     <div class="food-menu-desc">
-                        <h4><?php echo $value['title']?></h4>
-                        <p class="food-price"><?php echo $value['price']?> Tk</p>
+                        <h4><a style="color: black" href="food_view.php?id=<?php echo $value['id']?>"><?php echo $value['title']?></a></h4>
+                        <p class="food-price"><a style="color: black" href="food_view.php?id=<?php echo $value['id']?>"><?php echo $value['price']?> Tk</a></p>
                         <p class="food-detail">
-                            <?php echo preg_replace('/((\w+\W*){'.(13).'}(\w+))(.*)/', '${1}', $value['description']);?>
+                            <a style="color: #747d8c" href="food_view.php?id=<?php echo $value['id']?>"><?php echo preg_replace('/((\w+\W*){'.(13).'}(\w+))(.*)/', '${1}', $value['description']);?></a>
                         </p>
-                        <br>
-                        <a href="food_veiw.php?id=<?php echo $value['id']?>" class="btn btn-primary">View Food</a>
                     </div>
             </div>
         <?php }?>
