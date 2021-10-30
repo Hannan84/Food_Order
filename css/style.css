@@ -33,18 +33,30 @@ table{
     font-family: arial, sans-serif;
     border-collapse: collapse;
 }
-/*td, th {*/
-/*    border: 1px solid #dddddd;*/
-/*    text-align: center;*/
-/*    padding: 8px;*/
-/*}*/
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
 .img-responsive{
     width: 100%;
 }
 .img-curve{
     border-radius: 15px;
 }
-
+.qty_button{
+    cursor: pointer;
+    border: none;
+}
+.qty_span{
+    border: 1px solid gray;
+    padding: 6px 6px 7px 6px;
+}
+.qty_div{
+    border: 1px solid grey;
+    width: 60px;height: 25px;
+    padding-top: 6px;
+}
 .text-right{
     text-align: right;
 }

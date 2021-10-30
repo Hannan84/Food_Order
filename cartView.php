@@ -17,14 +17,14 @@ include 'partial_front/navbar.php';
             else {?>
 
 
-            <table>
+            <table class="tbl-full">
                 <thead>
                     <tr>
                         <th>S.N.</th>
                         <th>Title</th>
                         <th>Image</th>
-                        <th>Quantity</th>
                         <th>price</th>
+                        <th>Quantity</th>
                         <th>Total</th>
                         <th>Action</th>
                     </tr>
@@ -56,15 +56,15 @@ include 'partial_front/navbar.php';
                                     ?>
                                 </td>
                                 <input type="hidden" name="image" value="<?php echo $value['image']?>">
+                                <td><?php echo $value['price']?> Tk</td>
                                 <td>
-                                    <div class="text-center" style="border: 1px solid grey; width: 60px;height: 25px;padding-top: 6px;margin-left: 12px">
-                                        <button style="border: none;padding-left: 5px;cursor: pointer" type="submit" name="qty_sub" title="Quantity Sub">-</button>
+                                    <div class="qty_div">
+                                        <button class="qty_button" type="submit" name="qty_sub" title="Quantity Sub">-</button>
                                         <input type="hidden" name="qty" value="<?php echo $value['qty']?>">
-                                        <span><?php echo $value['qty']?></span>
-                                        <button style="border: none;padding-right: 5px;cursor: pointer" type="submit" name="qty_add" title="Quantity Add">+</button>
+                                        <span class="qty_span"><?php echo $value['qty']?></span>
+                                        <button class="qty_button" type="submit" name="qty_add" title="Quantity Add">+</button>
                                     </div>
                                 </td>
-                                <td><?php echo $value['price']?> Tk</td>
                                 <input type="hidden" name="price" value="<?php echo $value['price']?>">
                                 <td><?php echo number_format($value['price']*$value['qty'],2)?> Tk</td>
                                 <td>
@@ -78,13 +78,13 @@ include 'partial_front/navbar.php';
                     <?php $total += $value['price']*$value['qty']?>
                 <?php }}?>
                     <tr>
-                        <th></th><th></th><th></th><th></th><th></th><th>Subtotal</th><th><?php echo number_format($total,2)?> Tk</th><th></th
+                        <th></th><th></th><th></th><th></th><th></th><th>Subtotal</th><th><?php echo number_format($total,2)?> Tk</th>
                     </tr>
                     <tr>
-                        <th></th><th></th><th></th><th></th><th></th><th>Delivery fee</th><th><?php echo number_format($delivery_fee,2)?> Tk</th><th></th
+                        <th></th><th></th><th></th><th></th><th></th><th>Delivery fee</th><th><?php echo number_format($delivery_fee,2)?> Tk</th>
                     </tr>
                     <tr>
-                        <th></th><th></th><th></th><th></th><th></th><th>Total</th><th><?php echo number_format($delivery_fee+$total,2)?> Tk</th><th></th
+                        <th></th><th></th><th></th><th></th><th></th><th>Total</th><th><?php echo number_format($delivery_fee+$total,2)?> Tk</th>
                     </tr>
             </table>
             <?php } ?>
