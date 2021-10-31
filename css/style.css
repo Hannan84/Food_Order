@@ -23,7 +23,32 @@
     padding: 3% 0;
 }
 .tbl-full{
+    width: 80%;
+    border-bottom: 1em;
+    margin-bottom: 1em;
+}
+.tbl-div{
+    padding: 0 30px 0 30px;
+}
+.flex-display{
+    display: flex;
+}
+.flex-display > div{
     width: 100%;
+
+}
+.checkout-div{
+    width: 77%;
+    background-color: #ff4757;
+    padding: 8px;
+    text-align: center;
+}
+.checkout-div a{
+    display: block;
+    color: white;
+}
+.checkout-div a:hover{
+    color: white;
 }
 .form_input{
     padding: 4%;
@@ -34,9 +59,15 @@ table{
     border-collapse: collapse;
 }
 td, th {
-    border: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
     text-align: center;
     padding: 8px;
+    color: #5d5c5c;
+    font-size: .9em;
+}
+th{
+    text-transform: uppercase;
+    letter-spacing: .05em;
 }
 .img-responsive{
     width: 100%;
@@ -50,12 +81,13 @@ td, th {
 }
 .qty_span{
     border: 1px solid gray;
-    padding: 6px 6px 7px 6px;
+    padding: 6px 6px 9px 6px;
 }
 .qty_div{
     border: 1px solid grey;
     width: 60px;height: 25px;
     padding-top: 6px;
+    margin-inline: auto;
 }
 .text-right{
     text-align: right;
