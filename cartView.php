@@ -59,10 +59,10 @@ include 'partial_front/navbar.php';
                                 <td><?php echo $value['price']?> Tk</td>
                                 <td>
                                     <div class="qty_div">
-                                        <button class="qty_button" type="submit" name="qty_sub" title="Quantity Sub">-</button>
+                                        <button style="padding-right: 2px" class="qty_button" type="submit" name="qty_sub" title="Quantity Sub">-</button>
                                         <input type="hidden" name="qty" value="<?php echo $value['qty']?>">
                                         <span class="qty_span"><?php echo $value['qty']?></span>
-                                        <button class="qty_button" type="submit" name="qty_add" title="Quantity Add">+</button>
+                                        <button style="padding-left: 2px" class="qty_button" type="submit" name="qty_add" title="Quantity Add">+</button>
                                     </div>
                                 </td>
                                 <input type="hidden" name="price" value="<?php echo $value['price']?>">
@@ -78,13 +78,13 @@ include 'partial_front/navbar.php';
                     <?php $total += $value['price']*$value['qty']?>
                 <?php }}?>
                     <tr>
-                        <th></th><th></th><th></th><th></th><th></th><th>Subtotal</th><th><?php echo number_format($total,2)?> Tk</th>
+                        <th></th><th></th><th></th><th></th><th>Subtotal</th><th><?php echo number_format($total,2)?> Tk</th><th></th>
                     </tr>
                     <tr>
-                        <th></th><th></th><th></th><th></th><th></th><th>Delivery fee</th><th><?php echo number_format($delivery_fee,2)?> Tk</th>
+                        <th></th><th></th><th></th><th></th><th>Delivery fee</th><th><?php echo number_format($delivery_fee,2)?> Tk</th><th></th>
                     </tr>
                     <tr>
-                        <th></th><th></th><th></th><th></th><th></th><th>Total</th><th><?php echo number_format($delivery_fee+$total,2)?> Tk</th>
+                        <th></th><th></th><th></th><th></th><th>Total</th><th><?php echo number_format($delivery_fee+$total,2)?> Tk</th><th></th>
                     </tr>
             </table>
             <?php } ?>
