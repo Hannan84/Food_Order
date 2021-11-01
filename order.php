@@ -1,17 +1,20 @@
 <?php
 // include navbar section
 include 'partial_front/navbar.php';
+// Check whether the user exist or not
+if (!isset($_SESSION['user'])){
+    header('location: user_login.php');
+}
 
-
-$user_obj = new User();
-$obj = new FrontBackConn();
-$std = $obj->displayDataOnOrder();
+//$user_obj = new User();
+//$obj = new FrontBackConn();
+//$std = $obj->displayDataOnOrder();
 
 
 // Check whether the submit button click or not
-if (isset($_POST['submit'])){
-    $obj->orderFood();
-}
+//if (isset($_POST['submit'])){
+//    $obj->orderFood();
+//}
 ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
@@ -29,29 +32,8 @@ if (isset($_POST['submit'])){
                 <fieldset>
                     <legend>Selected Food</legend>
 
-                    <div class="food-menu-img">
-                        <?php
-//                   Check whether image is available or not
-                        if ($std['image'] != ""){
-                            ?>
-                            <img src="images/food/<?php echo $std['image'];?>" alt="Pizza" class="img-responsive img-curve"  width="100px" height="100px">
-                            <?php
-                        }
-                        else{
-                            echo "<div style='color: red'> Image Not Added</div>";
-                        }
-                        ?>
-                    </div>
-    
                     <div class="food-menu-desc">
-                        <h3><?php echo $std['title']?></h3>
-                        <input type="hidden" name="food" value="<?php echo $std['title']?>">
-                        <p class="food-price"><?php echo $std['price']?> Tk</p>
-                        <input type="hidden" name="price" value="<?php echo $std['price']?>">
 
-                        <div class="order-label">Quantity</div>
-                        <input type="number" name="qty" class="input-responsive" value="1" min="1" required>
-                        
                     </div>
 
                 </fieldset>
@@ -75,7 +57,7 @@ if (isset($_POST['submit'])){
                             <input type="email" name="email" value="<?php echo $_SESSION['user']?>" class="input-responsive" readonly>
 
                             <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
-                            <textarea name="address" rows="10" class="input-responsive" required><?php echo $_SESSION['address']?></textarea>
+                            <textarea name="address" rows="5" class="input-responsive" required><?php echo $_SESSION['address']?></textarea>
                     <?php
                         }?>
 

@@ -23,7 +23,7 @@
     padding: 3% 0;
 }
 .tbl-full{
-    width: 80%;
+    width: 85%;
     border-bottom: 1em;
     margin-bottom: 1em;
 }
@@ -32,13 +32,14 @@
 }
 .flex-display{
     display: flex;
+    margin-left: 40px;
 }
 .flex-display > div{
     width: 100%;
 
 }
 .checkout-div{
-    width: 77%;
+    width: 82%;
     background-color: #ff4757;
     padding: 8px;
     text-align: center;
