@@ -18,7 +18,7 @@ if (!isset($_SESSION['user'])){
 ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
-    <section class="food-search">
+    <section style="padding: 7% 0">
         <div class="container">
             <?php if (isset($_SESSION['not_order'])){?>
                 <div class="alert-warning">
@@ -26,46 +26,83 @@ if (!isset($_SESSION['user'])){
                 </div>
             <?php unset($_SESSION['not_order']);}?>
             </br>
-            <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
-
-            <form action="" method="post" class="order">
-                <fieldset>
-                    <legend>Selected Food</legend>
-
-                    <div class="food-menu-desc">
-
-                    </div>
-
-                </fieldset>
-                
-                <fieldset>
-                    <legend>Delivery Details</legend>
-                    <?php
+            <form action="" method="post">
+                <div class="flex-display">
+                    <div class="tbl-div">
+                        <fieldset>
+                            <legend>Delivery Details</legend>
+                            <?php
 //                      Check whether user is available or not
-                        if (isset($_SESSION['user'])){
-                            ?>
-                            <div class="order-label">First Name <i class="fas fa-signature"></i></div>
-                            <input type="text" name="first_name" value="<?php echo $_SESSION['first_name']?>" class="input-responsive" required>
+                            if (isset($_SESSION['user'])){
+                                ?>
+                                <div class="order-label">First Name <i class="fas fa-signature"></i></div>
+                                <input type="text" name="first_name" value="<?php echo $_SESSION['first_name']?>" class="input-responsive" required>
 
-                            <div class="order-label">Last Name <i class="fas fa-signature"></i></div>
-                            <input type="text" name="last_name" value="<?php echo $_SESSION['last_name']?>" class="input-responsive" required>
+                                <div class="order-label">Last Name <i class="fas fa-signature"></i></div>
+                                <input type="text" name="last_name" value="<?php echo $_SESSION['last_name']?>" class="input-responsive" required>
 
-                            <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
-                            <input type="tel" name="contact" value="<?php echo $_SESSION['number']?>" class="input-responsive" required>
+                                <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
+                                <input type="tel" name="contact" value="<?php echo $_SESSION['number']?>" class="input-responsive" required>
 
-                            <div class="order-label">Email <i class="fas fa-mail-bulk"></i></div>
-                            <input type="email" name="email" value="<?php echo $_SESSION['user']?>" class="input-responsive" readonly>
+                                <div class="order-label">Email <i class="fas fa-mail-bulk"></i></div>
+                                <input type="email" name="email" value="<?php echo $_SESSION['user']?>" class="input-responsive" readonly>
 
-                            <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
-                            <textarea name="address" rows="5" class="input-responsive" required><?php echo $_SESSION['address']?></textarea>
-                    <?php
-                        }?>
+                                <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
+                                <textarea name="address" rows="5" class="input-responsive" required><?php echo $_SESSION['address']?></textarea>
+                                <?php
+                            }?>
+                        </fieldset>
+                    </div>
+                    <div class="tbl-div" style="border-left: 1px solid #e5e3e3;">
+                        <table class="tbl-full">
+                            <thead>
+                            <tr>
+                                <th class="text-left">FOOD</th>
+                                <th class="text-right">SUBTOTAL</th>
+                            </tr>
+                            </thead>
+                        </table>
+                        <table class="tbl-full">
+                        <?php
+                        $total = 0;
+                        $delivery_fee = 40;
+                        if (isset($_SESSION['myCart'])){
+                            foreach ($_SESSION['myCart'] as $value) {?>
+                                <?php $total += $value['price'] * $value['qty']?>
 
-                    <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
-                </fieldset>
-
+                            <tr>
+                                <td style="padding-bottom: 40px" class="text-left"><?php echo $value['title'] ." x ". $value['qty']?></td>
+                                <th style="padding-bottom: 40px" class="text-right"><?php echo number_format(($value['price'] * $value['qty']),2)?> Tk</th>
+                            </tr>
+                        <?php }}?>
+                            <tbody>
+                            <tr>
+                                <td class="text-left">Subtotal</td>
+                                <th class="text-right"><?php echo number_format($total,2)?> Tk</th>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Delivery fee</td>
+                                <th class="text-right"><?php echo number_format($delivery_fee,2)?> Tk</th>
+                            </tr>
+                            <tr>
+                                <td class="text-left">Total</td>
+                                <th class="text-right"><?php echo number_format($total+$delivery_fee,2)?> Tk</th>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="payment-div">
+                            <input type="radio" name="payment" value="COD">
+                            <label for="Payment">Cash on delivery</label>
+                            <p>আপনার খাবার হোম ডেলিভারি দেয়া হবে এবং
+                                সেখানেই ডেলিভারি চার্জসহ খাবার এর মূল্য একসাথে পরিশোধ করবেন।
+                                কোন অগ্রিম পেমেন্ট করতে হবেনা।পরবর্তী যেকোন অনুসন্ধানের জন্য আপনার অর্ডার সিরিয়াল নাম্বারটি মনে রাখুন।
+                                ডেলিভারী সংক্রান্ত কোন সমস্যা না হলে ৩০-৪০ মিনিটের মধ্যে খাবার পৌছে যাবে ইন শা আল্লাহ।</p>
+                        </div>
+                        <br>
+                        <input type="submit" name="submit" value="PLACE ORDER" class="btn btn-primary">
+                    </div>
+                </div>
             </form>
-
         </div>
     </section>
     <!-- fOOD SEARCH Section Ends Here -->
