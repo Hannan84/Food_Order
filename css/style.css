@@ -76,6 +76,12 @@ th{
 .img-curve{
     border-radius: 15px;
 }
+.qty_input{
+    width: 90px;
+    height: 23px;
+    border-radius: 5px;
+    padding-left: 3px;
+}
 .qty_button{
     cursor: pointer;
     border: none;

@@ -8,8 +8,8 @@ include 'partial_front/navbar.php';
 
     <section class="main_content">
         <div class="container">
-            <h2 class="text-center">My Cart</h2>
-            <br>
+            <h2 class="text-center" style="color: #4b4a4a">SHOPPING CART</h2>
+            <br><br>
             <?php
             if (!isset($_SESSION['myCart']) || count($_SESSION['myCart']) == 0){
                 echo "<h1 class='text-center'>Your Cart is Empty</h1>";
@@ -58,12 +58,7 @@ include 'partial_front/navbar.php';
                                         <input type="hidden" name="image" value="<?php echo $value['image']?>">
                                         <td><?php echo $value['price']?> Tk</td>
                                         <td>
-                                            <div class="qty_div">
-                                                <button style="padding-right: 2px" class="qty_button" type="submit" name="qty_sub" title="Quantity Sub">-</button>
-                                                <input type="hidden" name="qty" value="<?php echo $value['qty']?>">
-                                                <span class="qty_span"><?php echo $value['qty']?></span>
-                                                <button style="padding-left: 2px" class="qty_button" type="submit" name="qty_add" title="Quantity Add">+</button>
-                                            </div>
+                                            <input class="qty_input" type="number" name="qty" min="1" onchange="this.form.submit();" value="<?php echo $value['qty']?>">
                                         </td>
                                         <input type="hidden" name="price" value="<?php echo $value['price']?>">
                                         <td><?php echo number_format($value['price']*$value['qty'],2)?> Tk</td>

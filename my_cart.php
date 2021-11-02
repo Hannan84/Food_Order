@@ -24,19 +24,15 @@ if (isset($_GET['id'])){
         header('location: index.php');
     }
 
-}
-// update session value for added quantity to get individual id
-if ((isset($_GET['id'])) and (isset($_GET['Addition']) == 'add') and isset($_POST['qty_add'])){
-    $_SESSION['myCart'][$id] = array('id' => $id,'image' => $image,'title' => $title,'price' => $price,'qty' => $quantity+1,'description' => $description);
-    header('location: cartView.php');
-}
-// update session value for subtraction quantity to get individual id
-elseif ((isset($_GET['id'])) and (isset($_GET['Subtraction']) == 'sub') and isset($_POST['qty_sub'])){
-    if($quantity == 1){
-        $quantity = $quantity;
-    }else{
-        $quantity = $quantity-1;
+// Create condition for update quantity
+    if (isset($_POST['qty'])){
+        foreach ($_SESSION['myCart'] as $key => $value){
+            if ($value['id'] == $id){
+                $_SESSION['myCart'][$key]['qty'] = $_POST['qty'];
+                header('location: cartView.php');
+            }
+        }
     }
-    $_SESSION['myCart'][$id] = array('id' => $id,'image' => $image,'title' => $title,'price' => $price,'qty' => $quantity,'description' => $description);
-    header('location: cartView.php');
+
 }
+

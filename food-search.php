@@ -48,7 +48,7 @@ include 'partial_front/navbar.php';
                             <input type="hidden" name="title" value="<?php echo $value['title']?>">
                             <input type="hidden" name="price" value="<?php echo $value['price']?>">
                             <input type="hidden" name="description" value="<?php echo $value['description']?>">
-                            <input type="number" name="qty" value="1" min="1" max="50"  style="width: 90px; height: 23px; border-radius: 5px" placeholder="Quantity" required">
+                            <input class="qty_input" type="number" name="qty" value="1" min="1" max="50" placeholder="Quantity" required">
                             <button type="submit" name="submit" class="btn btn-primary">Add To Cart</button>
                         </div>
                     </form>

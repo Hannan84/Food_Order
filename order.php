@@ -18,7 +18,9 @@ if (!isset($_SESSION['user'])){
 ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
-    <section style="padding: 7% 0">
+    <section style="padding: 4% 0">
+        <h2 class="text-center" style="color: #4b4a4a">CHECKOUT DETAILS</h2>
+        <br>
         <div class="container">
             <?php if (isset($_SESSION['not_order'])){?>
                 <div class="alert-warning">
@@ -91,7 +93,7 @@ if (!isset($_SESSION['user'])){
                             </tbody>
                         </table>
                         <div class="payment-div">
-                            <input type="radio" name="payment" value="COD">
+                            <input type="radio" name="pay_method" value="COD">
                             <label for="Payment">Cash on delivery</label>
                             <p>আপনার খাবার হোম ডেলিভারি দেয়া হবে এবং
                                 সেখানেই ডেলিভারি চার্জসহ খাবার এর মূল্য একসাথে পরিশোধ করবেন।
