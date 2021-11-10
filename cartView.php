@@ -35,7 +35,7 @@ include 'partial_front/navbar.php';
                         $sn = 1;
                         if (isset($_SESSION['myCart'])){
                             foreach ($_SESSION['myCart'] as $value){?>
-                                <form action="my_cart.php?Addition=add&Subtraction=sub&id=<?php echo $value['id']?>" method="post">
+                                <form action="my_cart.php?id=<?php echo $value['id']?>" method="post">
                                     <tbody>
                                     <tr>
                                         <td><?php echo $sn++ ?></td>
@@ -58,7 +58,7 @@ include 'partial_front/navbar.php';
                                         <input type="hidden" name="image" value="<?php echo $value['image']?>">
                                         <td><?php echo $value['price']?> Tk</td>
                                         <td>
-                                            <input class="qty_input" type="number" name="qty" min="1" onchange="this.form.submit();" value="<?php echo $value['qty']?>">
+                                            <input class="qty_input" type="number" name="qty_item" min="1" onchange="this.form.submit();" value="<?php echo $value['qty']?>">
                                         </td>
                                         <input type="hidden" name="price" value="<?php echo $value['price']?>">
                                         <td><?php echo number_format($value['price']*$value['qty'],2)?> Tk</td>

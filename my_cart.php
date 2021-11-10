@@ -25,10 +25,10 @@ if (isset($_GET['id'])){
     }
 
 // Create condition for update quantity
-    if (isset($_POST['qty'])){
+    if (isset($_POST['qty_item'])){
         foreach ($_SESSION['myCart'] as $key => $value){
             if ($value['id'] == $id){
-                $_SESSION['myCart'][$key]['qty'] = $_POST['qty'];
+                $_SESSION['myCart'][$key]['qty'] = $_POST['qty_item'];
                 header('location: cartView.php');
             }
         }
