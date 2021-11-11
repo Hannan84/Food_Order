@@ -7,14 +7,14 @@ if (!isset($_SESSION['user'])){
 }
 
 //$user_obj = new User();
-//$obj = new FrontBackConn();
+$obj = new FrontBackConn();
 //$std = $obj->displayDataOnOrder();
 
 
 // Check whether the submit button click or not
-//if (isset($_POST['submit'])){
-//    $obj->orderFood();
-//}
+if (isset($_POST['submit'])){
+    $obj->orderFood();
+}
 ?>
 
     <!-- fOOD sEARCH Section Starts Here -->
@@ -46,8 +46,8 @@ if (!isset($_SESSION['user'])){
                                 <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
                                 <input type="tel" name="contact" value="<?php echo $_SESSION['number']?>" class="input-responsive" required>
 
-                                <div class="order-label">Email <i class="fas fa-mail-bulk"></i></div>
-                                <input type="email" name="email" value="<?php echo $_SESSION['user']?>" class="input-responsive" readonly>
+                                <div class="order-label">Email <i class="fas fa-mail-bulk"></i> (optional)</div>
+                                <input type="email" name="email" value="<?php echo $_SESSION['user']?>" class="input-responsive">
 
                                 <div class="order-label">Address <i class="fas fa-map-marker-alt"></i></div>
                                 <textarea name="address" rows="5" class="input-responsive" required><?php echo $_SESSION['address']?></textarea>
@@ -93,7 +93,7 @@ if (!isset($_SESSION['user'])){
                             </tbody>
                         </table>
                         <div class="payment-div">
-                            <input type="radio" name="pay_method" value="COD">
+                            <input required type="radio" name="pay_mode" value="COD">
                             <label for="Payment">Cash on delivery</label>
                             <p>আপনার খাবার হোম ডেলিভারি দেয়া হবে এবং
                                 সেখানেই ডেলিভারি চার্জসহ খাবার এর মূল্য একসাথে পরিশোধ করবেন।

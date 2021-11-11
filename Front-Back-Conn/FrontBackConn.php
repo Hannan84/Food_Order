@@ -224,12 +224,12 @@ class FrontBackConn extends Database{
 //    Insert Data to Order into Database
     public function orderFood(){
 //    Get the Data from Form
-        $food = $_POST['food'];
-        $price = $_POST['price'];
-        $qty = $this->conn->real_escape_string($_POST['qty']);
-
-        $total = $price * $qty;
-
+//        $food = $_POST['food'];
+//        $price = $_POST['price'];
+//        $qty = $this->conn->real_escape_string($_POST['qty']);
+//
+//        $total = $price * $qty;
+//
         date_default_timezone_set('Asia/Dhaka');
         $order_date = date("Y-m-d h:i:s a");
 
@@ -240,25 +240,59 @@ class FrontBackConn extends Database{
         $customer_contact = $this->conn->real_escape_string($_POST['contact']);
         $customer_email = $this->conn->real_escape_string($_POST['email']);
         $customer_address = $this->conn->real_escape_string($_POST['address']);
+        $pay_mode = $this->conn->real_escape_string($_POST['pay_mode']);
 
 
 //      Save the Order in Database
  //    sql query to save data into database
-        $sql = "INSERT INTO tbl_order VALUES (null, '$food','$price','$qty','$total','$order_date','$status','$first_name','$last_name','$customer_contact','$customer_email','$customer_address')";
+        $sql = "INSERT INTO tbl_order_manager VALUES (null, '$first_name','$last_name','$customer_contact','$customer_email','$customer_address','$pay_mode','$order_date','$status')";
 
 //    Executing query and saving data into database
         $result = $this->conn->query($sql);
 
         if ($result == true){
-//           Create a session variable to display massage
-            $_SESSION['order'] = 'Success!';
-//           Redirect to manage admin page
-            header('location: index.php');
+
+            $manage_id = $this->conn->insert_id;
+            $sql2 = "INSERT INTO `tbl_order_users`(`id`, `order_manage_id`, `food_id`, `food`, `price`, `qty`, `subtotal`) VALUES (null ,?,?,?,?,?,?)";
+            $stmt = $this->conn->prepare($sql2);
+            if ($stmt == true)
+            {
+                $stmt->bind_param("iisdid",$manage_id,$food_id,$food,$price,$qty,$subtotal);
+                foreach ($_SESSION['myCart'] as $value)
+                {
+                    $food_id = $value['id'];
+                    $food = $value['title'];
+                    $price = $value['price'];
+                    $qty = $value['qty'];
+                    $subtotal = $price*$qty;
+                    $stmt->execute();
+                }
+                unset($_SESSION['myCart']);
+                    echo "
+                <script>
+                alert('order placed successfully complete');
+                window.location.href = 'index.php';
+                </script> 
+                ";
+            }
+            else
+            {
+                echo "
+            <script>
+            alert('Sql query prepare error');
+            window.location.href = 'cartView.php';
+            </script>
+            ";
+            }
         }
         else{
 
-//           Create a session variable to display massage
-            $_SESSION['not_order'] = 'Warning!';
+            echo "
+            <script>
+            alert('order not complete');
+            window.location.href = 'cartView.php';
+            </script> 
+            ";
 
         }
     }
