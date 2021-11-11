@@ -4,9 +4,30 @@ include_once 'db_connection.php';
 
 class Order extends Database{
 //    Display Order data from Database
-    public function displayOrder(){
+    public function displayOrderManager(){
 //        Create sql query to display order data
-        $sql = "SELECT * FROM tbl_order";
+        $sql = "SELECT * FROM tbl_order_manager";
+
+//        Execute the Query
+        $result = $this->conn->query($sql);
+
+//        Check whether the Query Execute or not
+        if ($result == true){
+
+//            Get the Array to store data
+            $data = [];
+
+//            Using while loop to get all the data from database
+            while ($row = $result->fetch_assoc()){
+                $data[] = $row;
+            }return $data;
+        }
+    }
+
+    //    Display Order data from Database
+    public function displayOrderItem(){
+//        Create sql query to display order data
+        $sql = "SELECT * FROM tbl_order_item";
 
 //        Execute the Query
         $result = $this->conn->query($sql);
@@ -31,7 +52,7 @@ class Order extends Database{
 //        Get the order id
             $id = $_GET['Order_id'];
 //          Create Sqo query to view Order data
-            $sql = "SELECT * FROM tbl_order WHERE id = '$id'";
+            $sql = "SELECT * FROM tbl_order_manager WHERE id = '$id'";
 
 //          Execute the Query
             $result = $this->conn->query($sql);
@@ -62,13 +83,10 @@ class Order extends Database{
 
 //      Get data from form
         $id = $_GET['Order_id'];
-        $qty = $this->conn->real_escape_string($_POST['qty']);
-        $price = $this->conn->real_escape_string($_POST['price']);
-        $total = $qty * $price;
         $status = $_POST['status'];
 
 //        Sql Query to update data into database
-        $sql = "UPDATE tbl_order SET qty = '$qty',total = '$total', status = '$status' WHERE id = '$id'";
+        $sql = "UPDATE tbl_order_manager SET status = '$status' WHERE id = '$id'";
 
 //        Execute the Query
         $result = $this->conn->query($sql);
@@ -87,7 +105,7 @@ class Order extends Database{
     public function totalRevenue(){
 //        Create the Query to get revenue generate
 //        Aggregate function
-        $sql = "SELECT SUM(total) AS Total FROM tbl_order WHERE status = 'Delivered'";
+        $sql = "SELECT tbl_order_item.subtotal AS Total FROM tbl_order_item JOIN tbl_order_manager ON tbl_order_manager.id = tbl_order_item.food_id WHERE status = 'Delivered'";
 
 //        Execute the Query
         $result = $this->conn->query($sql);

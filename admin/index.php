@@ -20,8 +20,8 @@ $food_count = count($food_obj->displayFood());
 
 // create food class instant for food count
 $order_obj = new Order();
-$order_count = count($order_obj->displayOrder());
-$total_revenue = $order_obj->totalRevenue();
+$order_count = count($order_obj->displayOrderManager());
+//$total_revenue = $order_obj->totalRevenue();
 ?>
 
     <!--   Main Content Section Starts Hare -->
@@ -58,11 +58,11 @@ $total_revenue = $order_obj->totalRevenue();
                     Total Orders <i class="fab fa-first-order"></i>
                 </div>
 
-                <div class="col-4 text-center">
-                    <h1><?php echo $total_revenue['Total']?> Tk</h1>
-                    <br />
-                    Revenue Generated <i class="fas fa-coins"></i>
-                </div>
+<!--                <div class="col-4 text-center">-->
+<!--                    <h1>--><?php //echo $total_revenue['Total']?><!-- Tk</h1>-->
+<!--                    <br />-->
+<!--                    Revenue Generated <i class="fas fa-coins"></i>-->
+<!--                </div>-->
 
             <div class="clearfix"></div>
 

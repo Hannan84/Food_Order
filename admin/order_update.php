@@ -23,23 +23,6 @@ if (isset($_POST['submit'])){
     <?php unset($_SESSION['not_update']); }?>
     <br/>
     <form action="" method="post">
-        <br>
-        <div class="form-group">
-            <label for="Food">Food:</label>
-            <?php echo $std['food']?>
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="Price">Price: </label>
-            <?php echo $std['price']?> Tk <i class="fas fa-coins"></i>
-            <input type="hidden" name="price" value="<?php echo $std['price']?>">
-        </div>
-        <br>
-        <div class="form-group">
-            <label for="Quantity">Quantity:</label>
-            <input class="form-control" type="number" name="qty" value="<?php echo $std['qty']?>">
-        </div>
-        <br>
         <div class="form-group">
             <label for="Status">Status: <i class="fas fa-th-list"></i></label>
             <select name="status" class="form-control" style="width: 100%">
