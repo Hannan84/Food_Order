@@ -135,8 +135,8 @@ class Order extends Database{
 //    Create the Query to get Total revenue
     public function totalRevenue(){
 //        Create the Query to get revenue generate
-//        Aggregate function
-        $sql = "SELECT tbl_order_item.subtotal AS Total FROM tbl_order_item JOIN tbl_order_manager ON tbl_order_manager.id = tbl_order_item.food_id WHERE status = 'Delivered'";
+//        Use Aggregate function
+        $sql = "SELECT SUM(subtotal) as total FROM tbl_order_manager JOIN  tbl_order_item ON tbl_order_manager.id = tbl_order_item.manage_id WHERE status = 'Delivered'";
 
 //        Execute the Query
         $result = $this->conn->query($sql);
