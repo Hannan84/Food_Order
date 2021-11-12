@@ -253,7 +253,7 @@ class FrontBackConn extends Database{
         if ($result == true){
 
             $manage_id = $this->conn->insert_id;
-            $sql2 = "INSERT INTO `tbl_order_item`(`id`, `order_manage_id`, `food_id`, `food`, `price`, `qty`, `subtotal`) VALUES (null ,?,?,?,?,?,?)";
+            $sql2 = "INSERT INTO `tbl_order_item`(`id`, `manage_id`, `food_id`, `food`, `price`, `qty`, `subtotal`) VALUES (null ,?,?,?,?,?,?)";
             $stmt = $this->conn->prepare($sql2);
             if ($stmt == true)
             {

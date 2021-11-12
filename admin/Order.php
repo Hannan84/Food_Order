@@ -101,6 +101,37 @@ class Order extends Database{
         }
     }
 
+//    Delete Order into database
+    public function deleteOrder(){
+//       Get the id to select Order Data
+        $id = $_GET['Order_id'];
+
+//        Create sql query to delete data into tbl_order_manager table
+        $sql = "DELETE FROM tbl_order_manager WHERE id = '$id'";
+
+//        Execute the Query
+        $result = $this->conn->query($sql);
+
+//        Check whether the Query is execute or not
+        if ($result == true){
+//            Create sql query to delete data into tbl_order_item table
+            $sql2 = "DELETE FROM tbl_order_item WHERE manage_id = '$id'";
+
+//          Execute the Query
+            $result2 = $this->conn->query($sql2);
+            if ($result2 == true){
+                $_SESSION['delete'] = "Success!";
+//            redirect to manage order page
+                header('location: manage_order.php');
+            }
+            else{
+                echo "Delete Not Success";
+            }
+        }else{
+            echo "Delete Not Success";
+        }
+    }
+
 //    Create the Query to get Total revenue
     public function totalRevenue(){
 //        Create the Query to get revenue generate

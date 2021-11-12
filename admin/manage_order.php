@@ -18,7 +18,13 @@ include 'Order.php';
             <div class="alert-success">
                 <strong><?php echo $_SESSION['update'];?></strong> Update Successfully Complete.
             </div>
-            <?php unset($_SESSION['update']);}?>
+        <?php unset($_SESSION['update']);}?>
+        <?php if (isset($_SESSION['delete'])){?>
+            <div class="alert-success">
+                <strong><?php echo $_SESSION['delete'];?></strong> Delete Successfully Complete.
+            </div>
+        <?php unset($_SESSION['delete']);}?>
+
         <br/><br/>
 
         <table class="tbl-full">
@@ -87,6 +93,7 @@ include 'Order.php';
                                 $obj = new Order();
                                 $data = $obj->displayOrderItem();
                                 foreach ($data as $datum){
+                                    if ($value['id'] == $datum['manage_id']){
                                     ?>
                                     <tr>
                                         <td><?php echo $datum['food_id']?></td>
@@ -96,13 +103,14 @@ include 'Order.php';
                                         <td><?php echo $datum['subtotal']?>Tk</td>
                                     </tr>
                                     <?php $total += $datum['price']*$datum['qty']?>
-                                <?php } ?>
+                                <?php } }?>
                             </tbody>
                             <td></td><td></td><td></td><th>Total</th><th ><?php echo number_format($total,2)?>Tk</th>
                         </table>
                     </td>
                     <td>
                         <a href="order_update.php?Order_id=<?php echo $value['id']?>" class="btn-secondary" title="update"><i class="fas fa-edit"></i></a>
+                        <a class="btn-danger" onclick="return confirm('Are You Sure?')" href="order_delete.php?Order_id=<?php echo $value['id'];?>" title="delete"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
             <?php } ?>
