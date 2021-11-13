@@ -59,7 +59,7 @@ $total_revenue = $order_obj->totalRevenue();
                 </div>
 
                 <div class="col-4 text-center">
-                    <h1><?php echo $total_revenue['total']?> Tk</h1>
+                    <h1><?php echo 0+$total_revenue['total']?> Tk</h1>
                     <br />
                     Revenue Generated <i class="fas fa-coins"></i>
                 </div>

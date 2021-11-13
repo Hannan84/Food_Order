@@ -6,9 +6,7 @@ if (!isset($_SESSION['user'])){
     header('location: user_login.php');
 }
 
-//$user_obj = new User();
 $obj = new FrontBackConn();
-//$std = $obj->displayDataOnOrder();
 
 
 // Check whether the submit button click or not
@@ -37,6 +35,7 @@ if (isset($_POST['submit'])){
 //                      Check whether user is available or not
                             if (isset($_SESSION['user'])){
                                 ?>
+                                <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']?>">
                                 <div class="order-label">First Name <i class="fas fa-signature"></i></div>
                                 <input type="text" name="first_name" value="<?php echo $_SESSION['first_name']?>" class="input-responsive" required>
 

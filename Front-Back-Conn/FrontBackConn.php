@@ -224,17 +224,8 @@ class FrontBackConn extends Database{
 //    Insert Data to Order into Database
     public function orderFood(){
 //    Get the Data from Form
-//        $food = $_POST['food'];
-//        $price = $_POST['price'];
-//        $qty = $this->conn->real_escape_string($_POST['qty']);
-//
-//        $total = $price * $qty;
-//
-        date_default_timezone_set('Asia/Dhaka');
-        $order_date = date("Y-m-d h:i:s a");
-
-        $status = 'Ordered';
-
+        $user_id = $this->conn->real_escape_string($_POST['user_id']);
+        $order_id = rand(00000,99999);
         $first_name = $this->conn->real_escape_string($_POST['first_name']);
         $last_name = $this->conn->real_escape_string($_POST['last_name']);
         $customer_contact = $this->conn->real_escape_string($_POST['contact']);
@@ -242,10 +233,15 @@ class FrontBackConn extends Database{
         $customer_address = $this->conn->real_escape_string($_POST['address']);
         $pay_mode = $this->conn->real_escape_string($_POST['pay_mode']);
 
+        date_default_timezone_set('Asia/Dhaka');
+        $order_date = date("Y-m-d h:i:s a");
+
+        $status = 'Ordered';
+
 
 //      Save the Order in Database
  //    sql query to save data into database
-        $sql = "INSERT INTO tbl_order_manager VALUES (null, '$first_name','$last_name','$customer_contact','$customer_email','$customer_address','$pay_mode','$order_date','$status')";
+        $sql = "INSERT INTO tbl_order_manager VALUES (null, '$user_id', '$order_id', '$first_name','$last_name','$customer_contact','$customer_email','$customer_address','$pay_mode','$order_date','$status')";
 
 //    Executing query and saving data into database
         $result = $this->conn->query($sql);
