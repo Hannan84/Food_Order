@@ -112,7 +112,7 @@ class User extends Database {
 
 //  Create function to get single user information
     public function userDetails(){
-        $id = $_GET['id'];
+        $id = $_SESSION['id'];
 //       Create Sql Query to show data from database
         $sql = "SELECT * FROM tbl_user WHERE verified = 'active' AND id = '$id'";
 

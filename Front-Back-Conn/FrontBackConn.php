@@ -188,37 +188,25 @@ class FrontBackConn extends Database{
 
 
 //    Order Section Start
-//  Display data to do order based on click
-    public function displayDataOnOrder()
-    {
-//        Check whether id is passed or not
-        if (isset($_GET['food_id'])){
-//          food id is set and get the id
-            $food_id = $_GET['food_id'];
-//          Get the category title based on category Id
-            $sql = "SELECT * FROM tbl_food WHERE id = '$food_id'";
+//  Create function to get order  information
+    public function orderDetails(){
+        $id = $_SESSION['id'];
+//       Create Sql Query to show data from database
+        $sql = "SELECT * FROM tbl_order_manager WHERE user_id = '$id'";
+//        Execute the query
+        $result = $this->conn->query($sql);
 
-//          Execute the query
-            $result = $this->conn->query($sql);
-//        Checked whether the query execute or not
-            if ($result == true){
-//            check whether the data is available or not
-                if ($result->num_rows == 1){
-                    $row = $result->fetch_assoc();
-                    return $row;
-                }
-                else{
-//                redirect to page
-                    header('location: index.php');
-                }
+//        Check whether the Query is Execute or Not
+        if ($result==true){
+//          Get array to store data
+            $data = [];
+
+//          using while loop to get all the data from database
+            while ($raw = $result->fetch_assoc()) {
+                $data[] = $raw;
             }
+            return $data;
         }
-        else{
-//            Food_id not passed
-//            Redirect Home page
-            header('location: index.php');
-        }
-
     }
 
 //    Insert Data to Order into Database
@@ -232,6 +220,7 @@ class FrontBackConn extends Database{
         $customer_email = $this->conn->real_escape_string($_POST['email']);
         $customer_address = $this->conn->real_escape_string($_POST['address']);
         $pay_mode = $this->conn->real_escape_string($_POST['pay_mode']);
+        $amount = $this->conn->real_escape_string($_POST['amount']);
 
         date_default_timezone_set('Asia/Dhaka');
         $order_date = date("Y-m-d h:i:s a");
@@ -241,7 +230,7 @@ class FrontBackConn extends Database{
 
 //      Save the Order in Database
  //    sql query to save data into database
-        $sql = "INSERT INTO tbl_order_manager VALUES (null, '$user_id', '$order_id', '$first_name','$last_name','$customer_contact','$customer_email','$customer_address','$pay_mode','$order_date','$status')";
+        $sql = "INSERT INTO tbl_order_manager VALUES (null, '$user_id', '$order_id', '$first_name','$last_name','$customer_contact','$customer_email','$customer_address','$pay_mode', '$amount','$order_date','$status')";
 
 //    Executing query and saving data into database
         $result = $this->conn->query($sql);

@@ -93,6 +93,7 @@ if (isset($_POST['submit'])){
                         </table>
                         <div class="payment-div">
                             <input required type="radio" name="pay_mode" value="COD">
+                            <input type="hidden" name="amount" value="<?php echo $total+$delivery_fee?>">
                             <label for="Payment">Cash on delivery</label>
                             <p>আপনার খাবার হোম ডেলিভারি দেয়া হবে এবং
                                 সেখানেই ডেলিভারি চার্জসহ খাবার এর মূল্য একসাথে পরিশোধ করবেন।
