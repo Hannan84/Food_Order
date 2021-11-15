@@ -26,11 +26,17 @@ include 'Order.php';
         <?php unset($_SESSION['delete']);}?>
 
         <br/><br/>
-
+        <?php
+//       Create instant of Order class
+        $obj = new Order();
+        $data = $obj->displayOrderManager();
+        if (empty($data)){
+            echo "<h1 class='text-center'>Order is empty</h1>";
+        }
+        else {?>
         <table class="tbl-full">
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Full Name</th>
                 <th>Contact</th>
                 <th>Email</th>
                 <th>Address</th>
@@ -41,13 +47,9 @@ include 'Order.php';
                 <th>Action</th>
             </tr>
             <?php
-            //            Create instant of Order class
-            $obj = new Order();
-            $data = $obj->displayOrderManager();
             foreach ($data as $value){?>
                 <tr>
-                    <td><?php echo $value['first_name']?></td>
-                    <td><?php echo $value['last_name']?></td>
+                    <td><?php echo $value['name']?></td>
                     <td><?php echo $value['number']?></td>
                     <td><?php echo $value['email']?></td>
                     <td><?php echo $value['address']?></td>
@@ -113,7 +115,7 @@ include 'Order.php';
                         <a class="btn-danger" onclick="return confirm('Are You Sure?')" href="order_delete.php?Order_id=<?php echo $value['id'];?>" title="delete"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
-            <?php } ?>
+            <?php }} ?>
         </table>
 
     </div>

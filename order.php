@@ -36,12 +36,8 @@ if (isset($_POST['submit'])){
                             if (isset($_SESSION['user'])){
                                 ?>
                                 <input type="hidden" name="user_id" value="<?php echo $_SESSION['id']?>">
-                                <div class="order-label">First Name <i class="fas fa-signature"></i></div>
-                                <input type="text" name="first_name" value="<?php echo $_SESSION['first_name']?>" class="input-responsive" required>
-
-                                <div class="order-label">Last Name <i class="fas fa-signature"></i></div>
-                                <input type="text" name="last_name" value="<?php echo $_SESSION['last_name']?>" class="input-responsive" required>
-
+                                <div class="order-label">Full Name <i class="fas fa-signature"></i></div>
+                                <input type="text" name="name" value="<?php echo $_SESSION['first_name'].' '.$_SESSION['last_name']?>" class="input-responsive" required>
                                 <div class="order-label">Phone Number <i class="fas fa-phone"></i></div>
                                 <input type="tel" name="contact" value="<?php echo $_SESSION['number']?>" class="input-responsive" required>
 

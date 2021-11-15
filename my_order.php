@@ -18,7 +18,7 @@ if (!isset($_SESSION['user'])){
         <br><br>
         <?php
         $obj = new FrontBackConn();
-        $Data = $obj->orderDetails();
+        $Data = $obj->orderView();
         if (empty($Data)){
             echo "<h1 class='text-center'>You have no orders</h1>";
         }
@@ -41,7 +41,7 @@ if (!isset($_SESSION['user'])){
                     <td><?php echo $datum['order_date']?></td>
                     <td><?php echo $datum['status']?></td>
                     <td><?php echo $datum['amount']?> Tk</td>
-                    <td><a href="#">View</a></td>
+                    <td><a href="orderView.php?ViewId=<?php echo $datum['id']?>">View</a></td>
                 </tr>
             <?php }?>
             </tbody>
