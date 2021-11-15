@@ -239,7 +239,7 @@ class User extends Database {
     public function updateUser(){
 
 //        Get data from form
-        $id = $_GET['id'];
+        $id = $_SESSION['id'];
         $first_name = $this->conn->real_escape_string($_POST['first_name']);
         $last_name = $this->conn->real_escape_string($_POST['last_name']);
         $email     = $this->conn->real_escape_string($_POST['email']);
@@ -269,7 +269,7 @@ class User extends Database {
 //    Change user password into user table
     public function changePassword(){
 //        Get the data from form
-        $id = $_GET['id'];
+        $id = $_SESSION['id'];
         $current_pass = md5($_POST['curr_password']);
         $new_pass = md5($_POST['new_password']);
         $confirm_pass = md5($_POST['con_password']);

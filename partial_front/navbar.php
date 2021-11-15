@@ -67,7 +67,7 @@ if (isset($_SESSION['myCart'])){
                             </button>
                             <div class="dropdown-content" id="myDropdown">
                                 <a href="my_order.php">My orders</a>
-                                <a href="user_profile.php?id=<?php echo $_SESSION['id']?>">Profile</a>
+                                <a href="user_profile.php">Profile</a>
                                 <a href="user_logout.php">Logout</a>
                             </div>
                         </div>

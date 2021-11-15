@@ -1,7 +1,6 @@
 <?php
 // include navbar section
 include 'partial_front/navbar.php';
-include 'admin/Order.php';
 
 if (!isset($_SESSION['user'])){
 //    User is not logged in
@@ -17,6 +16,13 @@ if (!isset($_SESSION['user'])){
     <div class="container">
         <h2 class="text-center" style="color: #4b4a4a">ORDERS</h2>
         <br><br>
+        <?php
+        $obj = new FrontBackConn();
+        $Data = $obj->orderDetails();
+        if (empty($Data)){
+            echo "<h1 class='text-center'>You have no orders</h1>";
+        }
+        else {?>
         <table width="100%">
             <thead>
                 <tr>
@@ -29,10 +35,7 @@ if (!isset($_SESSION['user'])){
             </thead>
             <tbody>
             <?php
-            $obj = new FrontBackConn();
-            $Data = $obj->orderDetails();
             foreach ($Data as $datum){?>
-                <?php $_SESSION['manage_id'] = $datum['id']?>
                 <tr>
                     <td><?php echo $datum['order_id']?></td>
                     <td><?php echo $datum['order_date']?></td>
@@ -43,6 +46,7 @@ if (!isset($_SESSION['user'])){
             <?php }?>
             </tbody>
         </table>
+        <?php }?>
     </div>
 </section>
 
