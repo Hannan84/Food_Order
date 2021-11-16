@@ -20,7 +20,6 @@ include 'partial_front/navbar.php';
                     <table>
                         <thead>
                         <tr>
-                            <th>S.N.</th>
                             <th>Title</th>
                             <th>Image</th>
                             <th>price</th>
@@ -32,13 +31,11 @@ include 'partial_front/navbar.php';
                         <?php
                         $total = 0;
                         $delivery_fee = 40;
-                        $sn = 1;
                         if (isset($_SESSION['myCart'])){
                             foreach ($_SESSION['myCart'] as $value){?>
                                 <form action="my_cart.php?id=<?php echo $value['id']?>" method="post">
                                     <tbody>
                                     <tr>
-                                        <td><?php echo $sn++ ?></td>
                                         <td><?php echo $value['title']?></td>
                                         <input type="hidden" name="title" value="<?php echo $value['title']?>">
                                         <input type="hidden" name="description" value="<?php echo $value['description']?>">
@@ -47,7 +44,7 @@ include 'partial_front/navbar.php';
 //                                          Check whether image is available or not
                                             if ($value['image'] != ""){
                                                 ?>
-                                                <img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="img-curve"  width="100px" height="100px">
+                                                <img src="images/food/<?php echo $value['image'];?>" alt="Pizza" class="cart-img img-curve"  width="100px" height="100px">
                                                 <?php
                                             }
                                             else{

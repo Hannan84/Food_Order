@@ -22,7 +22,7 @@ if (isset($_POST['pass_submit'])){
     $obj->changePassword();
 }
 ?>
-<div class="form-container" style="width: 35% ; border: none">
+<div class="form-container profile">
     <h3 class="text-center" style="border-bottom: 1px solid #d4d3d3; padding-bottom: 25px">My Profile</h3>
     <?php if (isset($_SESSION['not_update'])){?>
         <div class="alert-warning">
