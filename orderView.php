@@ -13,6 +13,8 @@ $billingData = $obj->billingAddress();
     <section style="padding: 4% 0">
         <div class="container" style=" box-shadow: 0px 0px 22px 0px rgb(0 0 0 / 10%)">
             <div class="tbl-div">
+                <h1 style="color: #626161;font-size: medium">Order #<mark><?php echo $billingData['order_id']?></mark> was placed on <mark><?php echo $billingData['order_date']?></mark> and is currently <mark><?php echo $billingData['status']?></mark>.</h1>
+                <br>
                 <h1 style="color: #4b4a4a">Order details</h1>
                 <br>
                 <table style="width: 100%">
@@ -48,7 +50,7 @@ $billingData = $obj->billingAddress();
                     </tr>
                     <tr>
                         <td class="text-left">Payment method</td>
-                        <td class="text-right">Cash on delivery</td>
+                        <th class="text-right" style="font-size: small">Cash on delivery</th>
                     </tr>
                     <tr>
                         <td class="text-left">Total</td>
