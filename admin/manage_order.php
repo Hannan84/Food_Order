@@ -107,7 +107,9 @@ include 'Order.php';
                                     <?php $total += $datum['price']*$datum['qty']?>
                                 <?php } }?>
                             </tbody>
-                            <td></td><td></td><td></td><th>Total</th><th ><?php echo number_format($total,2)?>Tk</th>
+                            <tr>
+                                <th colspan="4">Total</th><th><?php echo number_format($total,2)?>Tk</th>
+                            </tr>
                         </table>
                     </td>
                     <td>
