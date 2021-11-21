@@ -35,7 +35,9 @@ if (!isset($_SESSION['user'])){
             </thead>
             <tbody>
             <?php
-            foreach ($Data as $datum){?>
+            foreach ($Data as $datum){
+                $_SESSION['ViewId'] = $datum['id'];
+                ?>
                 <tr>
                     <td><?php echo $datum['order_id']?></td>
                     <td><?php echo $datum['order_date']?></td>

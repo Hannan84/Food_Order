@@ -5,6 +5,11 @@ include 'partial_front/navbar.php';
 if (!isset($_SESSION['user'])){
     header('location: user_login.php');
 }
+if (!isset($_SESSION['ViewId'])){
+    header('location: my_order.php');
+}
+unset($_SESSION['ViewId']);
+
 $obj = new FrontBackConn();
 $billingData = $obj->billingAddress();
 ?>

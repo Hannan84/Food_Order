@@ -192,7 +192,7 @@ class FrontBackConn extends Database{
     public function orderView(){
         $id = $_SESSION['id'];
 //       Create Sql Query to show data from database
-        $sql = "SELECT * FROM tbl_order_manager WHERE user_id = '$id'";
+        $sql = "SELECT * FROM tbl_order_manager WHERE user_id = '$id' and status = 'Delivered'";
 //        Execute the query
         $result = $this->conn->query($sql);
 
