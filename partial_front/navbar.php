@@ -46,7 +46,7 @@ if (isset($_SESSION['myCart'])){
                     <a href="foods.php">Foods</a>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#contact">Contact</a>
                 </li>
                 <?php
                 if (!isset($_SESSION['user'])){?>
